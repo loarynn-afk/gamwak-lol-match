@@ -1,0 +1,37 @@
+name: Update LoL Stats
+
+on:
+  # 매일 오전 9시(KST) 자동 실행 (UTC 0시)
+  schedule:
+    - cron: '0 0 * * *'
+  
+  # 수동 실행 (내전 직전에 버튼 클릭으로 실행 가능)
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run scraper
+        run: |
+          python scraper.py
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update player stats - $(date +'%Y-%m-%d %H:%M')" && git push)
