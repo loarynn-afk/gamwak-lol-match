@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-01-09T16:29:13.256861",
+  "updated_at": "2026-01-09T16:43:27.292378",
   "players": {
     "우왁굳": {
       "name": "우왁굳",
@@ -7,13 +7,13 @@
       "tag": "KR1",
       "team": "wak",
       "position": "탑",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:13.265217",
+      "updated": "2026-01-09T16:43:28.155658",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%A9%94%EC%8B%9C%EC%95%84%EB%B9%A0%EC%9A%B0%EC%99%81%EA%B5%B3-KR1"
     },
     "릴파": {
@@ -22,13 +22,13 @@
       "tag": "KR1",
       "team": "wak",
       "position": "정글",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:15.273729",
+      "updated": "2026-01-09T16:43:31.943153",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%82%B4%EA%B0%80%EB%B0%94%EB%A1%9C%20%EB%A6%B4%ED%8C%8C%EB%8B%A4-KR1"
     },
     "빅토리": {
@@ -37,13 +37,13 @@
       "tag": "0219",
       "team": "wak",
       "position": "미드",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:17.281065",
+      "updated": "2026-01-09T16:43:35.502898",
       "opgg_url": "https://www.op.gg/summoners/kr/ViCTory-0219"
     },
     "비챤": {
@@ -52,13 +52,13 @@
       "tag": "xoxv",
       "team": "wak",
       "position": "원딜",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:19.288525",
+      "updated": "2026-01-09T16:43:39.333675",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%B9%9B%20%EC%B1%A4-xoxv"
     },
     "고세구": {
@@ -67,13 +67,13 @@
       "tag": "KR1",
       "team": "wak",
       "position": "서포터",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:21.297331",
+      "updated": "2026-01-09T16:43:42.029687",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%A0%88%EC%B8%A0%EA%B3%A0%EC%84%B8%EA%B5%AC-KR1"
     },
     "천양": {
@@ -82,13 +82,13 @@
       "tag": "KR1",
       "team": "wak",
       "position": "후보",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:23.305271",
+      "updated": "2026-01-09T16:43:44.735819",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%8F%88%EA%B9%8C%EC%8A%A4-KR1"
     },
     "감스트": {
@@ -97,13 +97,13 @@
       "tag": "1094",
       "team": "gam",
       "position": "탑",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:25.313370",
+      "updated": "2026-01-09T16:43:47.418239",
       "opgg_url": "https://www.op.gg/summoners/kr/%EC%A0%95%EA%B8%80%EC%9D%98%EC%8B%A0-1094"
     },
     "망구랑": {
@@ -112,13 +112,13 @@
       "tag": "MGR",
       "team": "gam",
       "position": "정글",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:27.321974",
+      "updated": "2026-01-09T16:43:50.145469",
       "opgg_url": "https://www.op.gg/summoners/kr/cs%EB%AA%BB%EB%A8%B9%EC%96%B4%EC%84%9C%EB%AF%B8%EC%95%88%ED%95%B4-MGR"
     },
     "단츄": {
@@ -127,13 +127,13 @@
       "tag": "owo",
       "team": "gam",
       "position": "미드",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:29.329509",
+      "updated": "2026-01-09T16:43:52.831504",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%8B%A8%EB%B0%94%EC%98%A4-owo"
     },
     "유설아": {
@@ -142,13 +142,13 @@
       "tag": "1445",
       "team": "gam",
       "position": "원딜",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:31.336703",
+      "updated": "2026-01-09T16:43:55.435737",
       "opgg_url": "https://www.op.gg/summoners/kr/%EC%A0%95%EC%B9%B4%EC%9C%A0%EC%84%A4%EC%95%84-1445"
     },
     "따린": {
@@ -157,13 +157,13 @@
       "tag": "KR1",
       "team": "gam",
       "position": "서포터",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:33.345355",
+      "updated": "2026-01-09T16:43:58.107265",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%AC%B4%EC%8A%A8%20%EC%83%9D%EA%B0%81%EC%9D%BC%EA%B9%8C-KR1"
     },
     "박재박": {
@@ -172,13 +172,13 @@
       "tag": "박재박",
       "team": "gam",
       "position": "후보",
-      "tier": "Unknown",
+      "tier": "Unranked",
       "division": "",
       "lp": "0",
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T16:29:35.354477",
+      "updated": "2026-01-09T16:44:00.785920",
       "opgg_url": "https://www.op.gg/summoners/kr/%EC%98%AC%EB%A6%AC%EB%B9%84%EC%95%84%EC%9E%AC-박재박"
     }
   }
