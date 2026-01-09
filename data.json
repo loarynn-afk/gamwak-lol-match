@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-01-09T17:04:48.767382",
+  "updated_at": "2026-01-09T17:25:09.045864",
   "players": {
     "우왁굳": {
       "name": "우왁굳",
@@ -13,7 +13,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:04:56.864945",
+      "updated": "2026-01-09T17:25:10.489359",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%A9%94%EC%8B%9C%EC%95%84%EB%B9%A0%EC%9A%B0%EC%99%81%EA%B5%B3-KR1"
     },
     "릴파": {
@@ -28,7 +28,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:04.281653",
+      "updated": "2026-01-09T17:25:14.181805",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%82%B4%EA%B0%80%EB%B0%94%EB%A1%9C%20%EB%A6%B4%ED%8C%8C%EB%8B%A4-KR1"
     },
     "빅토리": {
@@ -43,7 +43,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:11.206258",
+      "updated": "2026-01-09T17:25:17.869813",
       "opgg_url": "https://www.op.gg/summoners/kr/ViCTory-0219"
     },
     "비챤": {
@@ -58,7 +58,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:19.065194",
+      "updated": "2026-01-09T17:25:21.619060",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%B9%9B%20%EC%B1%A4-xoxv"
     },
     "고세구": {
@@ -73,7 +73,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:25.803382",
+      "updated": "2026-01-09T17:25:25.343518",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%A0%88%EC%B8%A0%EA%B3%A0%EC%84%B8%EA%B5%AC-KR1"
     },
     "천양": {
@@ -88,7 +88,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:32.470777",
+      "updated": "2026-01-09T17:25:29.352876",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%8F%88%EA%B9%8C%EC%8A%A4-KR1"
     },
     "감스트": {
@@ -103,7 +103,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:39.803292",
+      "updated": "2026-01-09T17:25:35.102173",
       "opgg_url": "https://www.op.gg/summoners/kr/%EC%A0%95%EA%B8%80%EC%9D%98%EC%8B%A0-1094"
     },
     "망구랑": {
@@ -118,7 +118,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:47.235019",
+      "updated": "2026-01-09T17:25:38.846280",
       "opgg_url": "https://www.op.gg/summoners/kr/cs%EB%AA%BB%EB%A8%B9%EC%96%B4%EC%84%9C%EB%AF%B8%EC%95%88%ED%95%B4-MGR"
     },
     "단츄": {
@@ -133,7 +133,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:05:54.091871",
+      "updated": "2026-01-09T17:25:42.532623",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%8B%A8%EB%B0%94%EC%98%A4-owo"
     },
     "유설아": {
@@ -148,7 +148,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:06:00.395574",
+      "updated": "2026-01-09T17:25:46.142036",
       "opgg_url": "https://www.op.gg/summoners/kr/%EC%A0%95%EC%B9%B4%EC%9C%A0%EC%84%A4%EC%95%84-1445"
     },
     "따린": {
@@ -163,7 +163,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:06:07.513866",
+      "updated": "2026-01-09T17:25:49.780079",
       "opgg_url": "https://www.op.gg/summoners/kr/%EB%AC%B4%EC%8A%A8%20%EC%83%9D%EA%B0%81%EC%9D%BC%EA%B9%8C-KR1"
     },
     "박재박": {
@@ -178,7 +178,7 @@
       "wins": 0,
       "losses": 0,
       "winrate": 0,
-      "updated": "2026-01-09T17:06:14.558733",
+      "updated": "2026-01-09T17:25:53.481848",
       "opgg_url": "https://www.op.gg/summoners/kr/%EC%98%AC%EB%A6%AC%EB%B9%84%EC%95%84%EC%9E%AC-박재박"
     }
   }
