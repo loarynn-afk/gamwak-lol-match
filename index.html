@@ -943,10 +943,10 @@
                     // 티어 업데이트
                     const tierEl = card.querySelector('.player-tier');
                     if (tierEl && player.tier !== 'Unknown') {
-                        const tierText = player.division 
+                        let seasonTag = ""; if (player.is_previous_season) seasonTag = ` (${player.season || "지난시즌"})`; else if (player.is_flex) seasonTag = " (자랭)"; const tierText = player.division 
                             ? `${player.tier} ${player.division}` 
                             : player.tier;
-                        tierEl.textContent = tierText;
+                        tierEl.textContent = tierText + seasonTag;
                         
                         // 티어 클래스 업데이트
                         tierEl.className = 'player-tier';
