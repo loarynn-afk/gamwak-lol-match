@@ -900,6 +900,87 @@
         </div>
     </section>
 
+    <script>
+        // data.json에서 실시간 데이터 로드
+        async function loadPlayerData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) return;
+                
+                const data = await response.json();
+                
+                // 업데이트 시간 표시
+                const updatedAt = new Date(data.updated_at);
+                const timeStr = updatedAt.toLocaleString('ko-KR');
+                
+                // 각 선수 데이터 업데이트
+                for (const [name, player] of Object.entries(data.players)) {
+                    updatePlayerCard(name, player);
+                }
+                
+                // 푸터에 업데이트 시간 추가
+                const footer = document.querySelector('.footer');
+                if (footer && !document.getElementById('update-time')) {
+                    const updateInfo = document.createElement('p');
+                    updateInfo.id = 'update-time';
+                    updateInfo.style.cssText = 'margin-top: 10px; font-size: 0.8rem; color: #4CAF50;';
+                    updateInfo.textContent = `🔄 데이터 업데이트: ${timeStr}`;
+                    footer.appendChild(updateInfo);
+                }
+                
+                console.log('Player data loaded:', data);
+            } catch (e) {
+                console.log('data.json not found or error:', e);
+            }
+        }
+        
+        function updatePlayerCard(name, player) {
+            // 선수 이름으로 카드 찾기
+            const cards = document.querySelectorAll('.player-card');
+            for (const card of cards) {
+                const nameEl = card.querySelector('.player-name');
+                if (nameEl && nameEl.textContent.includes(name)) {
+                    // 티어 업데이트
+                    const tierEl = card.querySelector('.player-tier');
+                    if (tierEl && player.tier !== 'Unknown') {
+                        const tierText = player.division 
+                            ? `${player.tier} ${player.division}` 
+                            : player.tier;
+                        tierEl.textContent = tierText;
+                        
+                        // 티어 클래스 업데이트
+                        tierEl.className = 'player-tier';
+                        const tierLower = player.tier.toLowerCase();
+                        if (tierLower.includes('iron')) tierEl.classList.add('tier-iron');
+                        else if (tierLower.includes('bronze')) tierEl.classList.add('tier-bronze');
+                        else if (tierLower.includes('silver')) tierEl.classList.add('tier-silver');
+                        else if (tierLower.includes('gold')) tierEl.classList.add('tier-gold');
+                        else if (tierLower.includes('platinum')) tierEl.classList.add('tier-platinum');
+                        else if (tierLower.includes('emerald')) tierEl.classList.add('tier-emerald');
+                        else if (tierLower.includes('diamond')) tierEl.classList.add('tier-diamond');
+                        else tierEl.classList.add('tier-unranked');
+                    }
+                    
+                    // 승률 업데이트
+                    const winrateEl = card.querySelector('.player-winrate');
+                    if (winrateEl && player.wins !== undefined) {
+                        winrateEl.textContent = `${player.wins}승 ${player.losses}패 (${player.winrate}%)`;
+                        
+                        // 승률에 따른 색상
+                        if (player.winrate >= 60) winrateEl.style.color = '#4CAF50';
+                        else if (player.winrate <= 45) winrateEl.style.color = '#f44336';
+                        else winrateEl.style.color = '';
+                    }
+                    
+                    break;
+                }
+            }
+        }
+        
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', loadPlayerData);
+    </script>
+
     <footer class="footer">
         <p>감왁 롤 내전 매치업 분석</p>
         <p style="margin-top: 10px; font-size: 0.8rem;">
