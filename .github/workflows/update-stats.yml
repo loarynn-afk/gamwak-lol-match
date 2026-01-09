@@ -1,11 +1,8 @@
 name: Update LoL Stats
 
 on:
-  # 매일 오전 9시(KST) 자동 실행 (UTC 0시)
   schedule:
     - cron: '0 0 * * *'
-  
-  # 수동 실행 (내전 직전에 버튼 클릭으로 실행 가능)
   workflow_dispatch:
 
 jobs:
@@ -20,6 +17,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
       
       - name: Install dependencies
         run: |
