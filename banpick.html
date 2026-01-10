@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감왁 내전 - 모의 밴픽</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 50%, #0f0f20 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* 헤더 */
+        .header {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #ff6b35, #f7c94b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .header-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .back-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .phase-display {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .timer-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f7c94b;
+            min-width: 50px;
+        }
+        
+        .reset-btn {
+            padding: 8px 16px;
+            background: #ef4444;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .reset-btn:hover {
+            background: #dc2626;
+        }
+        
+        /* 메인 레이아웃 */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 80px);
+        }
+        
+        /* 팀 사이드 */
+        .team-side {
+            width: 280px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-side.blue {
+            background: linear-gradient(180deg, rgba(59,130,246,0.2) 0%, rgba(59,130,246,0.05) 100%);
+            border-right: 2px solid rgba(59,130,246,0.3);
+        }
+        
+        .team-side.red {
+            background: linear-gradient(180deg, rgba(239,68,68,0.2) 0%, rgba(239,68,68,0.05) 100%);
+            border-left: 2px solid rgba(239,68,68,0.3);
+        }
+        
+        .team-name {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        
+        .team-side.blue .team-name {
+            background: rgba(59,130,246,0.3);
+            color: #60a5fa;
+        }
+        
+        .team-side.red .team-name {
+            background: rgba(239,68,68,0.3);
+            color: #f87171;
+        }
+        
+        /* 밴 슬롯 */
+        .ban-section {
+            margin-bottom: 15px;
+        }
+        
+        .section-label {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ban-slots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .ban-slot {
+            width: 45px;
+            height: 45px;
+            background: rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .ban-slot.active {
+            border-color: #f7c94b;
+            animation: glow 1s infinite;
+        }
+        
+        .ban-slot img {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            filter: grayscale(100%);
+        }
+        
+        .ban-slot::after {
+            content: '✕';
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ef4444;
+            opacity: 0;
+        }
+        
+        .ban-slot.filled::after {
+            opacity: 1;
+        }
+        
+        /* 픽 슬롯 */
+        .pick-section {
+            flex: 1;
+        }
+        
+        .pick-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .pick-slot {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            background: rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            min-height: 60px;
+        }
+        
+        .pick-slot.active {
+            border-color: #f7c94b;
+            animation: glow 1s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(247,201,75,0.5); }
+            50% { box-shadow: 0 0 15px rgba(247,201,75,0.8); }
+        }
+        
+        .pick-slot .position-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.6;
+        }
+        
+        .pick-slot .champ-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .pick-slot .player-info {
+            flex: 1;
+        }
+        
+        .pick-slot .player-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .pick-slot .player-most {
+            font-size: 0.7rem;
+            color: #888;
+        }
+        
+        .pick-slot .player-most .highlight {
+            color: #f7c94b;
+        }
+        
+        /* 중앙 챔피언 선택 영역 */
+        .champion-select {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        /* 검색 및 필터 */
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .position-filters {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .pos-filter {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .pos-filter:hover, .pos-filter.active {
+            background: rgba(247,201,75,0.3);
+            border-color: #f7c94b;
+        }
+        
+        /* 챔피언 그리드 */
+        .champion-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 8px;
+            overflow-y: auto;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+        }
+        
+        .champion-card {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .champion-card:hover {
+            border-color: #f7c94b;
+            transform: scale(1.05);
+        }
+        
+        .champion-card.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .champion-card.most-pick {
+            border-color: #22c55e;
+            box-shadow: 0 0 10px rgba(34,197,94,0.5);
+        }
+        
+        .champion-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .champion-card .name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2px;
+            background: rgba(0,0,0,0.8);
+            font-size: 0.6rem;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .champion-card .most-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #22c55e;
+            color: #000;
+            font-size: 0.5rem;
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        /* 확인 버튼 */
+        .confirm-section {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .confirm-btn {
+            padding: 12px 40px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .confirm-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(34,197,94,0.4);
+        }
+        
+        .confirm-btn:disabled {
+            background: #444;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* 완료 화면 */
+        .result-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .result-overlay.show {
+            display: flex;
+        }
+        
+        .result-content {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .result-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff6b35, #f7c94b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .result-actions button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .result-actions .restart-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: #fff;
+        }
+        
+        .result-actions .home-btn {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* 반응형 */
+        @media (max-width: 1200px) {
+            .team-side {
+                width: 220px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .team-side {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .champion-select {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <div class="header">
+        <h1>🎯 감왁 내전 모의 밴픽</h1>
+        <div class="header-controls">
+            <a href="index.html" class="back-btn">← 돌아가기</a>
+            <div class="phase-display" id="phaseDisplay">블루팀 1차 밴</div>
+            <div class="timer-display" id="timerDisplay">30</div>
+            <button class="reset-btn" onclick="resetBanpick()">초기화</button>
+        </div>
+    </div>
+    
+    <!-- 메인 -->
+    <div class="main-container">
+        <!-- 블루팀 -->
+        <div class="team-side blue">
+            <div class="team-name">🔵 우왁굳 팀</div>
+            
+            <div class="ban-section">
+                <div class="section-label">BAN</div>
+                <div class="ban-slots" id="blueBans">
+                    <div class="ban-slot" data-index="0"></div>
+                    <div class="ban-slot" data-index="1"></div>
+                    <div class="ban-slot" data-index="2"></div>
+                    <div class="ban-slot" data-index="3"></div>
+                    <div class="ban-slot" data-index="4"></div>
+                </div>
+            </div>
+            
+            <div class="pick-section">
+                <div class="section-label">PICK</div>
+                <div class="pick-slots" id="bluePicks">
+                    <!-- 동적 생성 -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- 챔피언 선택 -->
+        <div class="champion-select">
+            <div class="search-filter">
+                <input type="text" class="search-input" id="searchInput" placeholder="챔피언 검색...">
+                <div class="position-filters">
+                    <div class="pos-filter active" data-pos="all">전체</div>
+                    <div class="pos-filter" data-pos="top">탑</div>
+                    <div class="pos-filter" data-pos="jgl">정글</div>
+                    <div class="pos-filter" data-pos="mid">미드</div>
+                    <div class="pos-filter" data-pos="bot">원딜</div>
+                    <div class="pos-filter" data-pos="sup">서폿</div>
+                </div>
+            </div>
+            
+            <div class="champion-grid" id="championGrid">
+                <!-- 동적 생성 -->
+            </div>
+            
+            <div class="confirm-section">
+                <button class="confirm-btn" id="confirmBtn" disabled onclick="confirmSelection()">챔피언 선택</button>
+            </div>
+        </div>
+        
+        <!-- 레드팀 -->
+        <div class="team-side red">
+            <div class="team-name">🔴 감스트 팀</div>
+            
+            <div class="ban-section">
+                <div class="section-label">BAN</div>
+                <div class="ban-slots" id="redBans">
+                    <div class="ban-slot" data-index="0"></div>
+                    <div class="ban-slot" data-index="1"></div>
+                    <div class="ban-slot" data-index="2"></div>
+                    <div class="ban-slot" data-index="3"></div>
+                    <div class="ban-slot" data-index="4"></div>
+                </div>
+            </div>
+            
+            <div class="pick-section">
+                <div class="section-label">PICK</div>
+                <div class="pick-slots" id="redPicks">
+                    <!-- 동적 생성 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 완료 오버레이 -->
+    <div class="result-overlay" id="resultOverlay">
+        <div class="result-content">
+            <h2>🎉 밴픽 완료!</h2>
+            <p>밴픽이 완료되었습니다.</p>
+            <div class="result-actions">
+                <button class="restart-btn" onclick="resetBanpick()">다시 하기</button>
+                <a href="index.html"><button class="home-btn">메인으로</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 감왁 내전 선수 데이터
+        const blueTeam = [
+            { name: "우왁굳", position: "탑", most: ["블라디미르", "문도박사", "모데카이저"] },
+            { name: "릴파", position: "정글", most: ["녹턴", "말파이트", "문도박사"] },
+            { name: "빅토리", position: "미드", most: ["오리아나", "빅토르", "베이가"] },
+            { name: "비챤", position: "원딜", most: ["아펠리오스", "시비르", "애쉬"] },
+            { name: "고세구", position: "서폿", most: ["세라핀", "럭스", "노틸러스"] }
+        ];
+        
+        const redTeam = [
+            { name: "감스트", position: "정글", most: ["이블린", "탈론", "말파이트"] },
+            { name: "망구랑", position: "정글", most: ["마오카이", "말파이트", "누누와윌럼프"] },
+            { name: "단츄", position: "미드", most: ["제라스", "아리", "리산드라"] },
+            { name: "유설아", position: "원딜", most: ["미스포츈", "흐웨이", "애쉬"] },
+            { name: "따린", position: "서폿", most: ["라칸", "니코", "노틸러스"] }
+        ];
+        
+        // 모든 선수의 모스트 챔피언 수집
+        const allMostChampions = new Set();
+        [...blueTeam, ...redTeam].forEach(p => p.most.forEach(c => allMostChampions.add(c)));
+        
+        // 밴픽 순서 (토너먼트 드래프트)
+        const banpickOrder = [
+            // 1차 밴
+            { team: 'blue', type: 'ban', index: 0 },
+            { team: 'red', type: 'ban', index: 0 },
+            { team: 'blue', type: 'ban', index: 1 },
+            { team: 'red', type: 'ban', index: 1 },
+            { team: 'blue', type: 'ban', index: 2 },
+            { team: 'red', type: 'ban', index: 2 },
+            // 1차 픽
+            { team: 'blue', type: 'pick', index: 0 },
+            { team: 'red', type: 'pick', index: 0 },
+            { team: 'red', type: 'pick', index: 1 },
+            { team: 'blue', type: 'pick', index: 1 },
+            { team: 'blue', type: 'pick', index: 2 },
+            { team: 'red', type: 'pick', index: 2 },
+            // 2차 밴
+            { team: 'red', type: 'ban', index: 3 },
+            { team: 'blue', type: 'ban', index: 3 },
+            { team: 'red', type: 'ban', index: 4 },
+            { team: 'blue', type: 'ban', index: 4 },
+            // 2차 픽
+            { team: 'red', type: 'pick', index: 3 },
+            { team: 'blue', type: 'pick', index: 3 },
+            { team: 'blue', type: 'pick', index: 4 },
+            { team: 'red', type: 'pick', index: 4 }
+        ];
+        
+        // 상태
+        let currentStep = 0;
+        let selectedChampion = null;
+        let usedChampions = new Set();
+        let champions = [];
+        let timer = 30;
+        let timerInterval = null;
+        
+        // 챔피언 영문-한글 매핑
+        const championNames = {
+            "Garen": "가렌", "Galio": "갈리오", "Gangplank": "갱플랭크", "Gragas": "그라가스",
+            "Graves": "그레이브즈", "Gwen": "그웬", "Gnar": "나르", "Nami": "나미",
+            "Nasus": "나서스", "Naafiri": "나피리", "Nautilus": "노틸러스", "Nocturne": "녹턴",
+            "Nunu": "누누와윌럼프", "Nidalee": "니달리", "Nilah": "닐라", "Neeko": "니코",
+            "Darius": "다리우스", "Diana": "다이애나", "Draven": "드레이븐", "Ryze": "라이즈",
+            "Rakan": "라칸", "Rammus": "람머스", "Lux": "럭스", "Rumble": "럼블",
+            "Renata": "레나타 글라스크", "Renekton": "레넥톤", "Leona": "레오나", "RekSai": "렉사이",
+            "Rell": "렐", "Rengar": "렝가", "Lucian": "루시안", "Lulu": "룰루",
+            "Leblanc": "르블랑", "LeeSin": "리 신", "Riven": "리븐", "Lissandra": "리산드라",
+            "Lillia": "릴리아", "MasterYi": "마스터 이", "Maokai": "마오카이", "Malzahar": "말자하",
+            "Malphite": "말파이트", "Mordekaiser": "모데카이저", "Morgana": "모르가나", "DrMundo": "문도박사",
+            "MissFortune": "미스포츈", "Milio": "밀리오", "Bard": "바드", "Varus": "바루스",
+            "Vi": "바이", "Veigar": "베이가", "Vayne": "베인", "Vex": "벡스",
+            "Belveth": "벨베스", "Velkoz": "벨코즈", "Volibear": "볼리베어", "Braum": "브라움",
+            "Briar": "브라이어", "Brand": "브랜드", "Vladimir": "블라디미르", "Blitzcrank": "블리츠크랭크",
+            "Viego": "비에고", "Viktor": "빅토르", "Poppy": "뽀삐", "Samira": "사미라",
+            "Sion": "사이온", "Sylas": "사일러스", "Shaco": "샤코", "Senna": "세나",
+            "Seraphine": "세라핀", "Sejuani": "세주아니", "Sett": "세트", "Sona": "소나",
+            "Soraka": "소라카", "Shen": "쉔", "Shyvana": "쉬바나", "Smolder": "스몰더",
+            "Swain": "스웨인", "Skarner": "스카너", "Sivir": "시비르", "XinZhao": "신짜오",
+            "Syndra": "신드라", "Singed": "신지드", "Thresh": "쓰레쉬", "Ahri": "아리",
+            "Amumu": "아무무", "AurelionSol": "아우렐리온 솔", "Ivern": "아이번", "Azir": "아지르",
+            "Akali": "아칼리", "Akshan": "아크샨", "Aatrox": "아트록스", "Aphelios": "아펠리오스",
+            "Alistar": "알리스타", "Ambessa": "암베사", "Annie": "애니", "Anivia": "애니비아",
+            "Ashe": "애쉬", "Yasuo": "야스오", "Ekko": "에코", "Elise": "엘리스",
+            "MonkeyKing": "오공", "Aurora": "오로라", "Ornn": "오른", "Orianna": "오리아나",
+            "Olaf": "올라프", "Yone": "요네", "Yorick": "요릭", "Udyr": "우디르",
+            "Urgot": "우르곳", "Warwick": "워윅", "Yuumi": "유미", "Irelia": "이렐리아",
+            "Evelynn": "이블린", "Ezreal": "이즈리얼", "Illaoi": "일라오이", "JarvanIV": "자르반 4세",
+            "Xayah": "자야", "Zyra": "자이라", "Zac": "자크", "Janna": "잔나",
+            "Jax": "잭스", "Zed": "제드", "Xerath": "제라스", "Zeri": "제리",
+            "Jayce": "제이스", "Zoe": "조이", "Ziggs": "직스", "Jhin": "진",
+            "Zilean": "질리언", "Jinx": "징크스", "Chogath": "초가스", "Karma": "카르마",
+            "Camille": "카밀", "Kassadin": "카사딘", "Karthus": "카서스", "Cassiopeia": "카시오페아",
+            "Kaisa": "카이사", "Khazix": "카직스", "Katarina": "카타리나", "Kalista": "칼리스타",
+            "Kennen": "케넨", "Caitlyn": "케이틀린", "Kayn": "케인", "Kayle": "케일",
+            "KogMaw": "코그모", "Corki": "코르키", "Quinn": "퀸", "KSante": "크산테",
+            "Kled": "클레드", "Qiyana": "키아나", "Kindred": "킨드레드", "Taric": "타릭",
+            "Talon": "탈론", "Taliyah": "탈리야", "TahmKench": "탐켄치", "Trundle": "트런들",
+            "Tristana": "트리스타나", "Tryndamere": "트린다미어", "TwistedFate": "트위스티드 페이트",
+            "Twitch": "트위치", "Teemo": "티모", "Pyke": "파이크", "Pantheon": "판테온",
+            "Fiddlesticks": "피들스틱", "Fiora": "피오라", "Fizz": "피즈", "Heimerdinger": "하이머딩거",
+            "Hecarim": "헤카림", "Hwei": "흐웨이", "Mel": "멜", "Yunara": "유나라"
+        };
+        
+        // DDragon에서 챔피언 로드
+        async function loadChampions() {
+            try {
+                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/16.1.1/data/ko_KR/champion.json');
+                const data = await response.json();
+                
+                champions = Object.values(data.data).map(champ => ({
+                    id: champ.id,
+                    name: champ.name,
+                    image: `https://ddragon.leagueoflegends.com/cdn/16.1.1/img/champion/${champ.id}.png`
+                }));
+                
+                // 가나다순 정렬
+                champions.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+                
+                renderChampions();
+            } catch (error) {
+                console.error('챔피언 로드 실패:', error);
+            }
+        }
+        
+        // 챔피언 그리드 렌더링
+        function renderChampions(filter = '') {
+            const grid = document.getElementById('championGrid');
+            const searchTerm = filter.toLowerCase();
+            
+            grid.innerHTML = champions
+                .filter(c => c.name.toLowerCase().includes(searchTerm))
+                .map(champ => {
+                    const isUsed = usedChampions.has(champ.name);
+                    const isMost = allMostChampions.has(champ.name);
+                    const isSelected = selectedChampion === champ.name;
+                    
+                    return `
+                        <div class="champion-card ${isUsed ? 'disabled' : ''} ${isMost ? 'most-pick' : ''} ${isSelected ? 'selected' : ''}"
+                             onclick="selectChampion('${champ.name}', '${champ.image}')"
+                             style="${isSelected ? 'border-color: #f7c94b; transform: scale(1.1);' : ''}">
+                            <img src="${champ.image}" alt="${champ.name}">
+                            <div class="name">${champ.name}</div>
+                            ${isMost ? '<div class="most-badge">모스트</div>' : ''}
+                        </div>
+                    `;
+                }).join('');
+        }
+        
+        // 챔피언 선택
+        function selectChampion(name, image) {
+            if (usedChampions.has(name)) return;
+            
+            selectedChampion = name;
+            selectedChampionImage = image;
+            renderChampions(document.getElementById('searchInput').value);
+            document.getElementById('confirmBtn').disabled = false;
+        }
+        
+        // 선택 확정
+        function confirmSelection() {
+            if (!selectedChampion || currentStep >= banpickOrder.length) return;
+            
+            const current = banpickOrder[currentStep];
+            const team = current.team;
+            const type = current.type;
+            const index = current.index;
+            
+            // 챔피언 사용 처리
+            usedChampions.add(selectedChampion);
+            
+            // UI 업데이트
+            if (type === 'ban') {
+                const banSlots = document.querySelectorAll(`#${team}Bans .ban-slot`);
+                const slot = banSlots[index];
+                slot.innerHTML = `<img src="${selectedChampionImage}" alt="${selectedChampion}">`;
+                slot.classList.add('filled');
+                slot.classList.remove('active');
+            } else {
+                const pickSlots = document.querySelectorAll(`#${team}Picks .pick-slot`);
+                const slot = pickSlots[index];
+                slot.querySelector('.champ-img').innerHTML = `<img src="${selectedChampionImage}" alt="${selectedChampion}" style="width:100%;height:100%;border-radius:8px;">`;
+                slot.classList.remove('active');
+            }
+            
+            // 다음 단계
+            selectedChampion = null;
+            selectedChampionImage = null;
+            document.getElementById('confirmBtn').disabled = true;
+            currentStep++;
+            
+            if (currentStep >= banpickOrder.length) {
+                // 완료
+                clearInterval(timerInterval);
+                document.getElementById('resultOverlay').classList.add('show');
+            } else {
+                updatePhaseDisplay();
+                highlightCurrentSlot();
+                renderChampions(document.getElementById('searchInput').value);
+                resetTimer();
+            }
+        }
+        
+        // 현재 단계 표시 업데이트
+        function updatePhaseDisplay() {
+            const current = banpickOrder[currentStep];
+            const teamName = current.team === 'blue' ? '블루팀' : '레드팀';
+            const typeName = current.type === 'ban' ? '밴' : '픽';
+            const phase = currentStep < 6 ? '1차' : (currentStep < 12 ? '1차' : (currentStep < 16 ? '2차' : '2차'));
+            
+            document.getElementById('phaseDisplay').textContent = `${teamName} ${phase} ${typeName}`;
+            document.getElementById('phaseDisplay').style.background = 
+                current.team === 'blue' 
+                    ? 'linear-gradient(135deg, #3b82f6, #1d4ed8)' 
+                    : 'linear-gradient(135deg, #ef4444, #b91c1c)';
+        }
+        
+        // 현재 슬롯 하이라이트
+        function highlightCurrentSlot() {
+            // 기존 하이라이트 제거
+            document.querySelectorAll('.ban-slot.active, .pick-slot.active').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            if (currentStep >= banpickOrder.length) return;
+            
+            const current = banpickOrder[currentStep];
+            
+            if (current.type === 'ban') {
+                const banSlots = document.querySelectorAll(`#${current.team}Bans .ban-slot`);
+                banSlots[current.index].classList.add('active');
+            } else {
+                const pickSlots = document.querySelectorAll(`#${current.team}Picks .pick-slot`);
+                pickSlots[current.index].classList.add('active');
+            }
+        }
+        
+        // 픽 슬롯 초기화
+        function initPickSlots() {
+            const bluePicksEl = document.getElementById('bluePicks');
+            const redPicksEl = document.getElementById('redPicks');
+            
+            bluePicksEl.innerHTML = blueTeam.map((player, i) => `
+                <div class="pick-slot" data-index="${i}">
+                    <div class="champ-img"></div>
+                    <div class="player-info">
+                        <div class="player-name">${player.name}</div>
+                        <div class="player-most">모스트: <span class="highlight">${player.most[0]}</span></div>
+                    </div>
+                </div>
+            `).join('');
+            
+            redPicksEl.innerHTML = redTeam.map((player, i) => `
+                <div class="pick-slot" data-index="${i}">
+                    <div class="champ-img"></div>
+                    <div class="player-info">
+                        <div class="player-name">${player.name}</div>
+                        <div class="player-most">모스트: <span class="highlight">${player.most[0]}</span></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // 타이머
+        function resetTimer() {
+            timer = 30;
+            document.getElementById('timerDisplay').textContent = timer;
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timer--;
+                document.getElementById('timerDisplay').textContent = timer;
+                
+                if (timer <= 0) {
+                    // 시간 초과 - 자동 스킵 (또는 랜덤 선택)
+                    resetTimer();
+                }
+            }, 1000);
+        }
+        
+        // 초기화
+        function resetBanpick() {
+            currentStep = 0;
+            selectedChampion = null;
+            usedChampions.clear();
+            
+            // UI 초기화
+            document.querySelectorAll('.ban-slot').forEach(slot => {
+                slot.innerHTML = '';
+                slot.classList.remove('filled', 'active');
+            });
+            
+            initPickSlots();
+            updatePhaseDisplay();
+            highlightCurrentSlot();
+            renderChampions('');
+            document.getElementById('confirmBtn').disabled = true;
+            document.getElementById('resultOverlay').classList.remove('show');
+            document.getElementById('searchInput').value = '';
+            
+            clearInterval(timerInterval);
+            resetTimer();
+            startTimer();
+        }
+        
+        // 검색
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            renderChampions(e.target.value);
+        });
+        
+        // 포지션 필터
+        document.querySelectorAll('.pos-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pos-filter').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // TODO: 포지션별 필터링 구현
+            });
+        });
+        
+        // 시작
+        loadChampions().then(() => {
+            initPickSlots();
+            updatePhaseDisplay();
+            highlightCurrentSlot();
+            startTimer();
+        });
+    </script>
+</body>
+</html>
