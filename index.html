@@ -34,6 +34,13 @@
         .subtitle {
             text-align: center;
             color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .data-notice {
+            text-align: center;
+            color: #666;
+            font-size: 0.75rem;
             margin-bottom: 20px;
         }
         
@@ -221,7 +228,7 @@
         }
         
         .best-season {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #aaa;
             text-align: right;
             margin-top: 4px;
@@ -229,6 +236,18 @@
         
         .best-season span {
             color: #f7c94b;
+            font-weight: 500;
+        }
+        
+        .best-tier {
+            font-size: 0.75rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 2px;
+        }
+        
+        .best-tier span {
+            color: #74b9ff;
             font-weight: 500;
         }
         
@@ -341,6 +360,7 @@
     <div class="container">
         <h1>감왁 롤 내전</h1>
         <p class="subtitle">우왁굳 팀 vs 감스트 팀</p>
+        <p class="data-notice">※ 현재 사용 중인 계정 기준 · 전시즌/최고티어는 해당 계정의 기록입니다</p>
         
         <div class="match-info">
             <h2>🏆 5판 3선승제 | 2패시 후보 투입 가능</h2>
@@ -459,10 +479,21 @@
             const defaultAvatar = `https://via.placeholder.com/60/333/fff?text=${encodeURIComponent(player.name[0])}`;
             
             // 시즌 표시: S2023-2 → S2023 (년도만)
-            let bestSeasonHtml = '';
-            if (player.bestSeason) {
+            let lastSeasonHtml = '';
+            if (player.lastSeason) {
+                const seasonText = player.lastSeason.replace(/-\d+$/g, '');
+                lastSeasonHtml = `<div class="best-season">전시즌: <span>${player.lastSeasonTier} (${seasonText})</span></div>`;
+            } else if (player.bestSeason) {
+                // 이전 데이터 호환성
                 const seasonText = player.bestSeason.replace(/-\d+\)/g, ')');
-                bestSeasonHtml = `<div class="best-season">전시즌: <span>${seasonText}</span></div>`;
+                lastSeasonHtml = `<div class="best-season">전시즌: <span>${seasonText}</span></div>`;
+            }
+            
+            // 최고 티어 표시
+            let bestTierHtml = '';
+            if (player.bestTier && player.bestTierSeason) {
+                const seasonText = player.bestTierSeason.replace(/-\d+$/g, '');
+                bestTierHtml = `<div class="best-tier">최고티어: <span>${player.bestTier} (${seasonText})</span></div>`;
             }
             
             // SOOP URL에서 ID 추출
@@ -490,7 +521,8 @@
                             <span class="tier-text ${tierInfo.class}">${tierInfo.text}</span>
                         </div>
                         ${player.record ? `<div class="tier-record">${player.record}</div>` : ''}
-                        ${bestSeasonHtml}
+                        ${lastSeasonHtml}
+                        ${bestTierHtml}
                     </div>
                 </div>
             `;
