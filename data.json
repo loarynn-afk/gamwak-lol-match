@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-01-10T15:30:00+09:00",
+  "lastUpdated": "2025-01-10T16:30:00+09:00",
   "players": {
     "team1": [
       {
@@ -23,8 +23,8 @@
       {
         "name": "빅토리",
         "nickname": "VicTory #0219",
-        "soop": "https://ch.sooplive.co.kr/jinjja123",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ji/jinjja123/jinjja123.jpg",
+        "soop": "https://ch.sooplive.co.kr/toryvac",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg",
         "position": "미드",
         "currentTier": "Unranked",
         "mostChampions": ["오리아나", "빅토르", "베이가"]
@@ -50,8 +50,8 @@
       {
         "name": "천양",
         "nickname": "돈까스 #kr1",
-        "soop": "https://ch.sooplive.co.kr/chunyang33",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ch/chunyang33/chunyang33.jpg",
+        "soop": "https://ch.sooplive.co.kr/243000",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/24/243000/243000.jpg",
         "position": "정글",
         "currentTier": "Bronze 2 60LP",
         "record": "1승 4패",
@@ -62,8 +62,8 @@
       {
         "name": "감스트",
         "nickname": "정글의신 #1094",
-        "soop": "https://ch.sooplive.co.kr/jh0619",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/jh/jh0619/jh0619.jpg",
+        "soop": "https://ch.sooplive.co.kr/devil0108",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg",
         "position": "정글",
         "currentTier": "Unranked",
         "mostChampions": ["이블린", "탈론", "말파이트"]
@@ -71,8 +71,8 @@
       {
         "name": "망구랑",
         "nickname": "cs못먹어서미안해 #MGR",
-        "soop": "https://ch.sooplive.co.kr/gudrn182",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/gu/gudrn182/gudrn182.jpg",
+        "soop": "https://ch.sooplive.co.kr/nmangoquince",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg",
         "position": "정글",
         "currentTier": "Unranked",
         "mostChampions": ["마오카이", "말파이트", "누누와윌럼프"]
@@ -80,8 +80,8 @@
       {
         "name": "단츄",
         "nickname": "단바오 #owo",
-        "soop": "https://ch.sooplive.co.kr/dancju1",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/dancju1/dancju1.jpg",
+        "soop": "https://ch.sooplive.co.kr/danchu17",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg",
         "position": "미드",
         "currentTier": "Unranked",
         "mostChampions": ["제라스", "아리", "리산드라"]
@@ -89,8 +89,8 @@
       {
         "name": "유설아",
         "nickname": "장카유설아 #1445",
-        "soop": "https://ch.sooplive.co.kr/901230club",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/90/901230club/901230club.jpg",
+        "soop": "https://ch.sooplive.co.kr/yeveee",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg",
         "position": "원딜",
         "currentTier": "Unranked",
         "mostChampions": ["블리츠크랭크", "흐웨이", "애쉬"]
@@ -98,8 +98,8 @@
       {
         "name": "따린",
         "nickname": "무슨 생각일까 #KR1",
-        "soop": "https://ch.sooplive.co.kr/ddarin123",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/dd/ddarin123/ddarin123.jpg",
+        "soop": "https://ch.sooplive.co.kr/insome0319",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/in/insome0319/insome0319.jpg",
         "position": "서폿",
         "currentTier": "Unranked",
         "mostChampions": ["라칸", "니코", "노틸러스"]
@@ -107,8 +107,8 @@
       {
         "name": "박재박",
         "nickname": "올리비아재 #박재박",
-        "soop": "https://ch.sooplive.co.kr/jae112219",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ja/jae112219/jae112219.jpg",
+        "soop": "https://ch.sooplive.co.kr/jaeparkk",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ja/jaeparkk/jaeparkk.jpg",
         "position": "탑",
         "currentTier": "Bronze 1 61LP",
         "record": "4승 4패",
