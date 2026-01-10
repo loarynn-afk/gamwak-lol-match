@@ -155,12 +155,25 @@
             margin-top: 8px;
         }
         
+        .champ-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        
         .champion-icon {
             width: 38px;
             height: 38px;
             border-radius: 6px;
             background: #333;
             border: 1px solid #555;
+        }
+        
+        .champ-games {
+            font-size: 0.65rem;
+            color: #888;
+            white-space: nowrap;
         }
         
         .player-tier {
@@ -381,7 +394,8 @@
             "diamond": "https://opgg-static.akamaized.net/images/medals_new/diamond.png?image=q_auto:good,f_png,w_144",
             "master": "https://opgg-static.akamaized.net/images/medals_new/master.png?image=q_auto:good,f_png,w_144",
             "grandmaster": "https://opgg-static.akamaized.net/images/medals_new/grandmaster.png?image=q_auto:good,f_png,w_144",
-            "challenger": "https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto:good,f_png,w_144"
+            "challenger": "https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto:good,f_png,w_144",
+            "unranked": "https://opgg-static.akamaized.net/images/medals_new/default.png?image=q_auto:good,f_png,w_144"
         };
         
         function getChampionIcon(name) {
@@ -391,7 +405,7 @@
         
         function getTierInfo(tier) {
             if (!tier || tier === 'Unranked') {
-                return { class: 'tier-unranked', icon: null, text: 'Unranked' };
+                return { class: 'tier-unranked', icon: tierIcons['unranked'], text: 'Unranked' };
             }
             const t = tier.toLowerCase();
             let tierName = '';
@@ -408,7 +422,7 @@
             
             return {
                 class: `tier-${tierName || 'unranked'}`,
-                icon: tierIcons[tierName] || null,
+                icon: tierIcons[tierName] || tierIcons['unranked'],
                 text: tier
             };
         }
@@ -421,9 +435,16 @@
         function renderPlayer(player) {
             const tierInfo = getTierInfo(player.currentTier);
             
-            const champIcons = (player.mostChampions || []).map(c => 
-                `<img class="champion-icon" src="${getChampionIcon(c)}" alt="${c}" title="${c}" onerror="this.style.display='none'">`
-            ).join('');
+            // 챔피언 아이콘 + 게임 수 표시
+            const champIcons = (player.mostChampions || []).map((c, idx) => {
+                const champName = typeof c === 'object' ? c.name : c;
+                const games = typeof c === 'object' ? c.games : (player.championGames ? player.championGames[idx] : null);
+                const gamesText = games ? `<span class="champ-games">${games}판</span>` : '';
+                return `<div class="champ-wrap">
+                    <img class="champion-icon" src="${getChampionIcon(champName)}" alt="${champName}" title="${champName}" onerror="this.style.display='none'">
+                    ${gamesText}
+                </div>`;
+            }).join('');
             
             const tierIconHtml = tierInfo.icon 
                 ? `<img class="tier-icon" src="${tierInfo.icon}" alt="${tierInfo.text}">`
@@ -431,9 +452,12 @@
             
             const defaultAvatar = `https://via.placeholder.com/60/333/fff?text=${encodeURIComponent(player.name[0])}`;
             
-            const bestSeasonHtml = player.bestSeason 
-                ? `<div class="best-season">전시즌: <span>${player.bestSeason}</span></div>`
-                : '';
+            // 시즌 표시: S2023-2 → S2023 (년도만)
+            let bestSeasonHtml = '';
+            if (player.bestSeason) {
+                const seasonText = player.bestSeason.replace(/-\d+\)/g, ')');
+                bestSeasonHtml = `<div class="best-season">전시즌: <span>${seasonText}</span></div>`;
+            }
             
             // SOOP URL에서 ID 추출
             const soopId = player.soop.split('/').pop();
