@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-01-10T18:30:00+09:00",
+  "lastUpdated": "2025-01-10T20:00:00+09:00",
   "players": {
     "team1": [
       {
@@ -9,7 +9,10 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg",
         "position": "탑",
         "currentTier": "Unranked",
-        "bestSeason": "Bronze 4 (S2024)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Bronze 2",
+        "bestTierSeason": "S2019",
+        "bestTier": "Bronze 2",
         "mostChampions": [
           {"name": "블라디미르", "games": 1},
           {"name": "문도박사", "games": 1},
@@ -23,7 +26,10 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/li/lilpa0309/lilpa0309.jpg",
         "position": "정글",
         "currentTier": "Unranked",
-        "bestSeason": "Gold 4 (S2023)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Iron 1",
+        "bestTierSeason": "S2022",
+        "bestTier": "Gold 4",
         "mostChampions": [
           {"name": "녹턴", "games": 3},
           {"name": "말파이트", "games": 2},
@@ -37,7 +43,10 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg",
         "position": "미드",
         "currentTier": "Unranked",
-        "bestSeason": "Silver 2 (S2025)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Silver 2",
+        "bestTierSeason": "S2024-2",
+        "bestTier": "Silver 2",
         "mostChampions": [
           {"name": "오리아나", "games": 5},
           {"name": "빅토르", "games": 4},
@@ -51,7 +60,10 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg",
         "position": "원딜",
         "currentTier": "Unranked",
-        "bestSeason": "Bronze 2 (S2025)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Bronze 2",
+        "bestTierSeason": "S2024-2",
+        "bestTier": "Bronze 2",
         "mostChampions": [
           {"name": "아펠리오스", "games": 2},
           {"name": "시비르", "games": 1},
@@ -66,7 +78,10 @@
         "position": "서폿",
         "currentTier": "Bronze 4 97LP",
         "record": "4승 1패",
-        "bestSeason": "Bronze 4 (S2025)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Bronze 4",
+        "bestTierSeason": "S2021",
+        "bestTier": "Bronze 4",
         "mostChampions": [
           {"name": "세라핀", "games": 7},
           {"name": "럭스", "games": 1},
@@ -81,7 +96,10 @@
         "position": "정글",
         "currentTier": "Bronze 2 60LP",
         "record": "1승 4패",
-        "bestSeason": "Platinum 4 (S2021)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Bronze 1",
+        "bestTierSeason": "S2019",
+        "bestTier": "Platinum 4",
         "mostChampions": [
           {"name": "말파이트", "games": 4},
           {"name": "신짜오", "games": 2},
@@ -98,7 +116,10 @@
         "position": "정글",
         "currentTier": "Bronze 4 23LP",
         "record": "3승 5패",
-        "bestSeason": "Bronze 4 (S2021)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Iron 3",
+        "bestTierSeason": "S2019",
+        "bestTier": "Bronze 4",
         "mostChampions": [
           {"name": "이블린", "games": 2},
           {"name": "탈론", "games": 2},
@@ -113,7 +134,10 @@
         "position": "정글",
         "currentTier": "Bronze 4 21LP",
         "record": "4승 7패",
-        "bestSeason": "Iron 3 (S2024)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Iron 4",
+        "bestTierSeason": "S2024-1",
+        "bestTier": "Iron 3",
         "mostChampions": [
           {"name": "마오카이", "games": 9},
           {"name": "말파이트", "games": 6},
@@ -127,7 +151,10 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg",
         "position": "미드",
         "currentTier": "Unranked",
-        "bestSeason": "Gold 4 (S2021)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Bronze 1",
+        "bestTierSeason": "S2019",
+        "bestTier": "Gold 4",
         "mostChampions": [
           {"name": "제라스", "games": 1},
           {"name": "아리", "games": 1},
@@ -141,7 +168,10 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg",
         "position": "원딜",
         "currentTier": "Unranked",
-        "bestSeason": "Gold 3 (S2022)",
+        "lastSeason": "S2024-1",
+        "lastSeasonTier": "Silver 4",
+        "bestTierSeason": "S2020",
+        "bestTier": "Gold 3",
         "mostChampions": [
           {"name": "미스포츈", "games": 2},
           {"name": "흐웨이", "games": 2},
@@ -169,7 +199,10 @@
         "position": "탑",
         "currentTier": "Bronze 1 61LP",
         "record": "4승 4패",
-        "bestSeason": "Silver 2 (S2023)",
+        "lastSeason": "S2024-2",
+        "lastSeasonTier": "Silver 3",
+        "bestTierSeason": "S2021",
+        "bestTier": "Silver 2",
         "mostChampions": [
           {"name": "잭스", "games": 1},
           {"name": "문도박사", "games": 1},
