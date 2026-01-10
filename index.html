@@ -44,6 +44,34 @@
             margin-bottom: 20px;
         }
         
+        .banpick-link-btn {
+            display: block;
+            max-width: 400px;
+            margin: 0 auto 20px;
+            padding: 16px 30px;
+            background: linear-gradient(135deg, #ff6b35, #f7c94b);
+            border: none;
+            border-radius: 12px;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: pulse-btn 2s infinite;
+        }
+        
+        .banpick-link-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(255,107,53,0.5);
+        }
+        
+        @keyframes pulse-btn {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(255,107,53,0); }
+        }
+        
         .match-info {
             text-align: center;
             margin-bottom: 15px;
@@ -198,6 +226,13 @@
         .tier-icon {
             width: 42px;
             height: 42px;
+        }
+        
+        .tier-icon-small {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-right: 2px;
         }
         
         .tier-text {
@@ -366,6 +401,8 @@
             <h2>🏆 5판 3선승제 | 2패시 후보 투입 가능</h2>
         </div>
         
+        <a href="banpick.html" class="banpick-link-btn">🎯 모의 밴픽 시작하기</a>
+        
         <p class="warning-text">⚠️ 포지션은 변경될 수 있습니다</p>
         
         <div class="vs-text">VS</div>
@@ -426,7 +463,7 @@
         
         function getChampionIcon(name) {
             const eng = championEnglish[name] || name;
-            return `https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/${eng}.png`;
+            return `https://ddragon.leagueoflegends.com/cdn/16.1.1/img/champion/${eng}.png`;
         }
         
         function getTierInfo(tier) {
@@ -482,7 +519,9 @@
             let lastSeasonHtml = '';
             if (player.lastSeason) {
                 const seasonText = player.lastSeason.replace(/-\d+$/g, '');
-                lastSeasonHtml = `<div class="best-season">전시즌: <span>${player.lastSeasonTier} (${seasonText})</span></div>`;
+                const lastTierName = player.lastSeasonTier.split(' ')[0].toLowerCase();
+                const lastTierIcon = tierIcons[lastTierName] ? `<img class="tier-icon-small" src="${tierIcons[lastTierName]}" alt="">` : '';
+                lastSeasonHtml = `<div class="best-season">전시즌: ${lastTierIcon}<span>${player.lastSeasonTier} (${seasonText})</span></div>`;
             } else if (player.bestSeason) {
                 // 이전 데이터 호환성
                 const seasonText = player.bestSeason.replace(/-\d+\)/g, ')');
@@ -493,7 +532,9 @@
             let bestTierHtml = '';
             if (player.bestTier && player.bestTierSeason) {
                 const seasonText = player.bestTierSeason.replace(/-\d+$/g, '');
-                bestTierHtml = `<div class="best-tier">최고티어: <span>${player.bestTier} (${seasonText})</span></div>`;
+                const bestTierName = player.bestTier.split(' ')[0].toLowerCase();
+                const bestTierIcon = tierIcons[bestTierName] ? `<img class="tier-icon-small" src="${tierIcons[bestTierName]}" alt="">` : '';
+                bestTierHtml = `<div class="best-tier">최고티어: ${bestTierIcon}<span>${player.bestTier} (${seasonText})</span></div>`;
             }
             
             // SOOP URL에서 ID 추출
