@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-01-10T17:30:00+09:00",
+  "lastUpdated": "2025-01-10T18:30:00+09:00",
   "players": {
     "team1": [
       {
@@ -9,11 +9,11 @@
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg",
         "position": "탑",
         "currentTier": "Unranked",
-        "bestSeason": "Bronze 2 (S2024)",
+        "bestSeason": "Bronze 4 (S2024)",
         "mostChampions": [
-          {"name": "블라디미르", "games": 8},
-          {"name": "문도박사", "games": 5},
-          {"name": "모데카이저", "games": 3}
+          {"name": "블라디미르", "games": 1},
+          {"name": "문도박사", "games": 1},
+          {"name": "모데카이저", "games": 1}
         ]
       },
       {
@@ -25,9 +25,9 @@
         "currentTier": "Unranked",
         "bestSeason": "Gold 4 (S2023)",
         "mostChampions": [
-          {"name": "녹턴", "games": 12},
-          {"name": "말파이트", "games": 8},
-          {"name": "문도박사", "games": 5}
+          {"name": "녹턴", "games": 3},
+          {"name": "말파이트", "games": 2},
+          {"name": "문도박사", "games": 1}
         ]
       },
       {
@@ -39,9 +39,9 @@
         "currentTier": "Unranked",
         "bestSeason": "Silver 2 (S2025)",
         "mostChampions": [
-          {"name": "오리아나", "games": 15},
-          {"name": "빅토르", "games": 10},
-          {"name": "베이가", "games": 7}
+          {"name": "오리아나", "games": 5},
+          {"name": "빅토르", "games": 4},
+          {"name": "베이가", "games": 2}
         ]
       },
       {
@@ -53,9 +53,9 @@
         "currentTier": "Unranked",
         "bestSeason": "Bronze 2 (S2025)",
         "mostChampions": [
-          {"name": "아펠리오스", "games": 6},
-          {"name": "시비르", "games": 4},
-          {"name": "애쉬", "games": 3}
+          {"name": "아펠리오스", "games": 2},
+          {"name": "시비르", "games": 1},
+          {"name": "애쉬", "games": 1}
         ]
       },
       {
@@ -64,12 +64,13 @@
         "soop": "https://ch.sooplive.co.kr/gosegu2",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/go/gosegu2/gosegu2.jpg",
         "position": "서폿",
-        "currentTier": "Unranked",
+        "currentTier": "Bronze 4 97LP",
+        "record": "4승 1패",
         "bestSeason": "Bronze 4 (S2025)",
         "mostChampions": [
-          {"name": "세라핀", "games": 9},
-          {"name": "럭스", "games": 6},
-          {"name": "노틸러스", "games": 4}
+          {"name": "세라핀", "games": 7},
+          {"name": "럭스", "games": 1},
+          {"name": "노틸러스", "games": 1}
         ]
       },
       {
@@ -82,9 +83,9 @@
         "record": "1승 4패",
         "bestSeason": "Platinum 4 (S2021)",
         "mostChampions": [
-          {"name": "말파이트", "games": 18},
-          {"name": "신짜오", "games": 12},
-          {"name": "오공", "games": 8}
+          {"name": "말파이트", "games": 4},
+          {"name": "신짜오", "games": 2},
+          {"name": "오공", "games": 1}
         ]
       }
     ],
@@ -95,12 +96,13 @@
         "soop": "https://ch.sooplive.co.kr/devil0108",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg",
         "position": "정글",
-        "currentTier": "Unranked",
+        "currentTier": "Bronze 4 23LP",
+        "record": "3승 5패",
         "bestSeason": "Bronze 4 (S2021)",
         "mostChampions": [
-          {"name": "이블린", "games": 10},
-          {"name": "탈론", "games": 7},
-          {"name": "말파이트", "games": 5}
+          {"name": "이블린", "games": 2},
+          {"name": "탈론", "games": 2},
+          {"name": "말파이트", "games": 1}
         ]
       },
       {
@@ -109,12 +111,13 @@
         "soop": "https://ch.sooplive.co.kr/nmangoquince",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg",
         "position": "정글",
-        "currentTier": "Unranked",
+        "currentTier": "Bronze 4 21LP",
+        "record": "4승 7패",
         "bestSeason": "Iron 3 (S2024)",
         "mostChampions": [
-          {"name": "마오카이", "games": 11},
-          {"name": "말파이트", "games": 8},
-          {"name": "누누와윌럼프", "games": 6}
+          {"name": "마오카이", "games": 9},
+          {"name": "말파이트", "games": 6},
+          {"name": "누누와윌럼프", "games": 3}
         ]
       },
       {
@@ -126,9 +129,9 @@
         "currentTier": "Unranked",
         "bestSeason": "Gold 4 (S2021)",
         "mostChampions": [
-          {"name": "제라스", "games": 14},
-          {"name": "아리", "games": 9},
-          {"name": "리산드라", "games": 6}
+          {"name": "제라스", "games": 1},
+          {"name": "아리", "games": 1},
+          {"name": "리산드라", "games": 1}
         ]
       },
       {
@@ -140,9 +143,9 @@
         "currentTier": "Unranked",
         "bestSeason": "Gold 3 (S2022)",
         "mostChampions": [
-          {"name": "블리츠크랭크", "games": 8},
-          {"name": "흐웨이", "games": 5},
-          {"name": "애쉬", "games": 4}
+          {"name": "미스포츈", "games": 2},
+          {"name": "흐웨이", "games": 2},
+          {"name": "애쉬", "games": 1}
         ]
       },
       {
@@ -153,9 +156,9 @@
         "position": "서폿",
         "currentTier": "Unranked",
         "mostChampions": [
-          {"name": "라칸", "games": 7},
-          {"name": "니코", "games": 5},
-          {"name": "노틸러스", "games": 4}
+          {"name": "라칸", "games": 2},
+          {"name": "니코", "games": 2},
+          {"name": "노틸러스", "games": 1}
         ]
       },
       {
@@ -168,9 +171,9 @@
         "record": "4승 4패",
         "bestSeason": "Silver 2 (S2023)",
         "mostChampions": [
-          {"name": "잭스", "games": 16},
-          {"name": "문도박사", "games": 10},
-          {"name": "케넨", "games": 7}
+          {"name": "잭스", "games": 1},
+          {"name": "문도박사", "games": 1},
+          {"name": "케넨", "games": 1}
         ]
       }
     ]
