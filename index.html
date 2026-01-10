@@ -241,12 +241,19 @@
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
+            text-decoration: none;
         }
         
         .live-status.live {
             background: linear-gradient(135deg, #e74c3c, #c0392b);
             color: #fff;
             animation: pulse 2s infinite;
+            cursor: pointer;
+        }
+        
+        .live-status.live:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.5);
         }
         
         .live-status.offline {
@@ -526,17 +533,15 @@
                 if (!statusEl) continue;
                 
                 const status = await checkLiveStatus(soopId);
+                const liveUrl = `https://play.sooplive.co.kr/${soopId}`;
                 
                 if (status.error) {
-                    statusEl.className = 'live-status offline';
-                    statusEl.innerHTML = `<span class="live-dot"></span>확인불가`;
+                    statusEl.outerHTML = `<span class="live-status offline" id="live-${soopId}"><span class="live-dot"></span>확인불가</span>`;
                 } else if (status.isLive) {
-                    statusEl.className = 'live-status live';
                     const viewerText = status.viewers > 0 ? `<span class="live-viewer">${status.viewers.toLocaleString()}명</span>` : '';
-                    statusEl.innerHTML = `<span class="live-dot"></span>LIVE${viewerText}`;
+                    statusEl.outerHTML = `<a href="${liveUrl}" target="_blank" class="live-status live" id="live-${soopId}" title="${status.title || '생방송 보기'}"><span class="live-dot"></span>LIVE${viewerText}</a>`;
                 } else {
-                    statusEl.className = 'live-status offline';
-                    statusEl.innerHTML = `<span class="live-dot"></span>오프라인`;
+                    statusEl.outerHTML = `<span class="live-status offline" id="live-${soopId}"><span class="live-dot"></span>오프라인</span>`;
                 }
                 
                 // API 호출 간격 조절 (100ms)
