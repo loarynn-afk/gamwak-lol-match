@@ -205,7 +205,13 @@
         .tier-platinum { color: #00cec9; }
         .tier-emerald { color: #00b894; }
         .tier-diamond { color: #74b9ff; }
-        .tier-unranked { color: #666; }
+        .tier-unranked { 
+            color: #888;
+            background: rgba(100,100,100,0.3);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
         
         .tier-record {
             font-size: 0.85rem;
@@ -394,8 +400,7 @@
             "diamond": "https://opgg-static.akamaized.net/images/medals_new/diamond.png?image=q_auto:good,f_png,w_144",
             "master": "https://opgg-static.akamaized.net/images/medals_new/master.png?image=q_auto:good,f_png,w_144",
             "grandmaster": "https://opgg-static.akamaized.net/images/medals_new/grandmaster.png?image=q_auto:good,f_png,w_144",
-            "challenger": "https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto:good,f_png,w_144",
-            "unranked": "https://opgg-static.akamaized.net/images/medals_new/default.png?image=q_auto:good,f_png,w_144"
+            "challenger": "https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto:good,f_png,w_144"
         };
         
         function getChampionIcon(name) {
@@ -405,7 +410,7 @@
         
         function getTierInfo(tier) {
             if (!tier || tier === 'Unranked') {
-                return { class: 'tier-unranked', icon: tierIcons['unranked'], text: 'Unranked' };
+                return { class: 'tier-unranked', icon: null, text: 'Unranked' };
             }
             const t = tier.toLowerCase();
             let tierName = '';
@@ -422,7 +427,7 @@
             
             return {
                 class: `tier-${tierName || 'unranked'}`,
-                icon: tierIcons[tierName] || tierIcons['unranked'],
+                icon: tierIcons[tierName] || null,
                 text: tier
             };
         }
