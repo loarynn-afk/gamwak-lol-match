@@ -101,48 +101,45 @@
         .player-card {
             display: flex;
             align-items: center;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
             background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            text-decoration: none;
-            color: inherit;
+            border-radius: 12px;
             transition: all 0.2s;
         }
         
         .player-card:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateX(5px);
         }
         
         .player-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 12px;
+            margin-right: 14px;
             border: 2px solid #444;
         }
         
         .player-info { flex: 1; }
         
         .player-name {
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
         
         .player-nickname {
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             color: #888;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
         
         .position-badge {
             display: inline-block;
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 10px;
+            font-size: 0.85rem;
+            padding: 3px 10px;
+            border-radius: 12px;
             font-weight: 500;
         }
         
@@ -154,37 +151,37 @@
         
         .champion-icons {
             display: flex;
-            gap: 4px;
-            margin-top: 6px;
+            gap: 6px;
+            margin-top: 8px;
         }
         
         .champion-icon {
-            width: 26px;
-            height: 26px;
-            border-radius: 4px;
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
             background: #333;
-            border: 1px solid #444;
+            border: 1px solid #555;
         }
         
         .player-tier {
             text-align: right;
-            min-width: 110px;
+            min-width: 140px;
         }
         
         .tier-display {
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 6px;
+            gap: 8px;
         }
         
         .tier-icon {
-            width: 32px;
-            height: 32px;
+            width: 42px;
+            height: 42px;
         }
         
         .tier-text {
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 600;
         }
         
@@ -198,10 +195,40 @@
         .tier-unranked { color: #666; }
         
         .tier-record {
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             color: #888;
             text-align: right;
-            margin-top: 2px;
+            margin-top: 3px;
+        }
+        
+        .best-season {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 4px;
+        }
+        
+        .best-season span {
+            color: #f7c94b;
+            font-weight: 500;
+        }
+        
+        .soop-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 12px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .soop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
         }
         
         @media (max-width: 900px) {
@@ -226,7 +253,7 @@
             <h2>🏆 5판 3선승제 | 2패시 후보 투입 가능</h2>
         </div>
         
-        <p class="warning-text">⚠️ 포지션은 변경될 수 있습니다 | 프로필 클릭시 SOOP 채널로 이동</p>
+        <p class="warning-text">⚠️ 포지션은 변경될 수 있습니다</p>
         
         <div class="vs-text">VS</div>
         
@@ -328,16 +355,21 @@
                 ? `<img class="tier-icon" src="${tierInfo.icon}" alt="${tierInfo.text}">`
                 : '';
             
-            const defaultAvatar = `https://via.placeholder.com/50/333/fff?text=${encodeURIComponent(player.name[0])}`;
+            const defaultAvatar = `https://via.placeholder.com/60/333/fff?text=${encodeURIComponent(player.name[0])}`;
+            
+            const bestSeasonHtml = player.bestSeason 
+                ? `<div class="best-season">전시즌: <span>${player.bestSeason}</span></div>`
+                : '';
             
             return `
-                <a href="${player.soop}" target="_blank" class="player-card">
+                <div class="player-card">
                     <img class="player-avatar" src="${player.avatar}" alt="${player.name}" onerror="this.src='${defaultAvatar}'">
                     <div class="player-info">
                         <div class="player-name">${player.name}</div>
                         <div class="player-nickname">${player.nickname}</div>
                         <span class="position-badge pos-${getPositionClass(player.position)}">${player.position}</span>
                         <div class="champion-icons">${champIcons}</div>
+                        <a href="${player.soop}" target="_blank" class="soop-btn">📺 방송국 바로가기</a>
                     </div>
                     <div class="player-tier">
                         <div class="tier-display">
@@ -345,8 +377,9 @@
                             <span class="tier-text ${tierInfo.class}">${tierInfo.text}</span>
                         </div>
                         ${player.record ? `<div class="tier-record">${player.record}</div>` : ''}
+                        ${bestSeasonHtml}
                     </div>
-                </a>
+                </div>
             `;
         }
         
