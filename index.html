@@ -133,14 +133,23 @@
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
             transition: transform 0.2s;
         }
         
         .player-card:hover {
             transform: translateX(5px);
+        }
+        
+        .player-card.ingame {
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+        }
+        
+        .player-top-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
         }
         
         .player-avatar {
@@ -161,6 +170,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
         
         .position-tag {
@@ -183,98 +193,25 @@
             margin-top: 2px;
         }
         
-        .player-stats {
-            text-align: right;
-            min-width: 120px;
-        }
-        
-        .tier-info {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 8px;
-        }
-        
-        .tier-icon {
-            width: 32px;
-            height: 32px;
-        }
-        
-        .tier-text {
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        
-        .record {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            margin-top: 3px;
-        }
-        
-        .winrate {
-            font-size: 0.8rem;
-            color: #22c55e;
-        }
-        
-        .prev-season {
-            font-size: 0.75rem;
-            color: #64748b;
-            margin-top: 3px;
-        }
-        
-        .champions {
+        .badges {
             display: flex;
             gap: 5px;
-            margin-top: 8px;
+            margin-top: 5px;
             flex-wrap: wrap;
-        }
-        
-        .champion {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            background: #1e293b;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.75rem;
-        }
-        
-        .champion-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-        }
-        
-        .champion-games {
-            color: #94a3b8;
-            font-size: 0.7rem;
-        }
-        
-        .buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        
-        .btn {
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        
-        .btn:hover {
-            opacity: 0.8;
-        }
-        
-        .btn-soop {
-            background: #5c3dff;
-            color: white;
         }
         
         .live-badge {
             background: #ef4444;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        .ingame-badge {
+            background: #a855f7;
             color: white;
             padding: 3px 8px;
             border-radius: 4px;
@@ -296,6 +233,142 @@
             font-size: 0.7rem;
         }
         
+        .btn-soop {
+            background: #5c3dff;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            text-decoration: none;
+        }
+        
+        .btn-soop:hover {
+            opacity: 0.8;
+        }
+        
+        /* 랭크 섹션 */
+        .rank-section {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .rank-box {
+            flex: 1;
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
+        .rank-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+        
+        .rank-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tier-icon {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .rank-details {
+            flex: 1;
+        }
+        
+        .tier-text {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .lp-text {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+        
+        .record-text {
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+        
+        .winrate-text {
+            font-size: 0.7rem;
+            color: #22c55e;
+        }
+        
+        /* 모스트 챔피언 */
+        .champions-section {
+            margin-top: 10px;
+        }
+        
+        .section-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+        
+        .champions {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .champion-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            border: 2px solid #4a5568;
+        }
+        
+        .champion-icon:hover {
+            border-color: #00d4ff;
+            transform: scale(1.1);
+        }
+        
+        /* 최근 전적 */
+        .recent-matches {
+            display: flex;
+            gap: 3px;
+            margin-top: 8px;
+        }
+        
+        .match-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .match-icon.win {
+            border: 2px solid #3b82f6;
+        }
+        
+        .match-icon.lose {
+            border: 2px solid #ef4444;
+        }
+        
+        .match-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+        }
+        
+        .loading-text {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        
+        .error-text {
+            color: #f87171;
+            font-size: 0.8rem;
+        }
+        
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -308,14 +381,8 @@
                 flex-direction: column;
             }
             
-            .player-card {
-                flex-wrap: wrap;
-            }
-            
-            .player-stats {
-                width: 100%;
-                text-align: left;
-                margin-top: 10px;
+            .rank-section {
+                flex-direction: column;
             }
         }
     </style>
@@ -325,7 +392,7 @@
         <div class="header">
             <h1>🎮 감왁 롤 내전</h1>
             <p>우왁굳 팀 vs 감스트 팀 - 5판 3선승제</p>
-            <p id="lastUpdated"></p>
+            <p id="lastUpdated" style="color: #22c55e; margin-top: 5px;">실시간 Riot API 연동</p>
         </div>
         
         <div class="vs-section">
@@ -341,7 +408,9 @@
                     <h2>🔥 우왁굳 팀 <span class="side-tag" id="team1Side">블루</span></h2>
                     <p>리더: 우왁굳</p>
                 </div>
-                <div class="players-list" id="team1Players"></div>
+                <div class="players-list" id="team1Players">
+                    <div class="loading-text">데이터 로딩 중...</div>
+                </div>
             </div>
             
             <div class="team-container team2" id="team2Container">
@@ -349,158 +418,242 @@
                     <h2>⚡ 감스트 팀 <span class="side-tag" id="team2Side">레드</span></h2>
                     <p>리더: 감스트</p>
                 </div>
-                <div class="players-list" id="team2Players"></div>
+                <div class="players-list" id="team2Players">
+                    <div class="loading-text">데이터 로딩 중...</div>
+                </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>데이터 출처: DeepLOL | 마지막 업데이트: <span id="updateTime"></span></p>
+            <p>데이터 출처: Riot API 실시간 연동 | <span id="updateTime"></span></p>
         </div>
     </div>
     
     <script>
+        // 선수 목록 (Riot ID 포함)
+        const PLAYERS = {
+            team1: [
+                { name: "우왁굳", riotName: "메시아빠우왁굳", riotTag: "KR1", position: "탑", soop: "https://ch.sooplive.co.kr/ecvhao", avatar: "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg" },
+                { name: "릴파", riotName: "내가바로 릴파다", riotTag: "KR1", position: "정글", soop: "https://ch.sooplive.co.kr/lilpa0309", avatar: "https://profile.img.sooplive.co.kr/LOGO/li/lilpa0309/lilpa0309.jpg" },
+                { name: "빅토리", riotName: "ViCTory", riotTag: "0219", position: "미드", soop: "https://ch.sooplive.co.kr/toryvac", avatar: "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg" },
+                { name: "비챤", riotName: "빛 챤", riotTag: "xoxv", position: "원딜", soop: "https://ch.sooplive.co.kr/viichan6", avatar: "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg" },
+                { name: "고세구", riotName: "레츠고세구", riotTag: "KR1", position: "서폿", soop: "https://ch.sooplive.co.kr/gosegu2", avatar: "https://profile.img.sooplive.co.kr/LOGO/go/gosegu2/gosegu2.jpg" },
+                { name: "천양", riotName: "돈까스", riotTag: "KR1", position: "후보", soop: "https://ch.sooplive.co.kr/243000", avatar: "https://profile.img.sooplive.co.kr/LOGO/24/243000/243000.jpg" }
+            ],
+            team2: [
+                { name: "감스트", riotName: "정글의신", riotTag: "1094", position: "탑", soop: "https://ch.sooplive.co.kr/devil0108", avatar: "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg" },
+                { name: "망구랑", riotName: "cs못먹어서미안해", riotTag: "MGR", position: "정글", soop: "https://ch.sooplive.co.kr/nmangoquince", avatar: "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg" },
+                { name: "단츄", riotName: "단바오", riotTag: "owo", position: "미드", soop: "https://ch.sooplive.co.kr/danchu17", avatar: "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg" },
+                { name: "유설아", riotName: "장카유설아", riotTag: "1445", position: "원딜", soop: "https://ch.sooplive.co.kr/yeveee", avatar: "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg" },
+                { name: "따린", riotName: "무슨 생각일까", riotTag: "KR1", position: "서폿", soop: "https://ch.sooplive.co.kr/insome0319", avatar: "https://profile.img.sooplive.co.kr/LOGO/in/insome0319/insome0319.jpg" },
+                { name: "젤리", riotName: "인간젤리", riotTag: "KR1", position: "후보", soop: "https://ch.sooplive.co.kr/jaeparkk", avatar: "https://profile.img.sooplive.co.kr/LOGO/ja/jaeparkk/jaeparkk.jpg" }
+            ]
+        };
+        
         let liveStatus = {};
+        const API_BASE = window.location.origin;
         
         // 티어 아이콘 URL
         function getTierIcon(tier) {
-            const tierLower = tier?.toLowerCase().split(' ')[0] || 'unranked';
+            const tierLower = (tier || 'unranked').toLowerCase();
             if (tierLower === 'unranked' || tierLower === '') {
                 return 'https://opgg-static.akamaized.net/images/medals_new/default.png';
             }
             return `https://opgg-static.akamaized.net/images/medals_new/${tierLower}.png`;
         }
         
-        // 챔피언 아이콘 URL
-        function getChampionIcon(name) {
-            const champMap = {
-                // 기존
-                '문도박사': 'DrMundo', '가렌': 'Garen', '요릭': 'Yorick', '브라이어': 'Briar',
-                '바이': 'Vi', '잭스': 'Jax', '녹턴': 'Nocturne', '말파이트': 'Malphite',
-                '오리아나': 'Orianna', '빅토르': 'Viktor', '베이가': 'Veigar',
-                '케이틀린': 'Caitlyn', '시비르': 'Sivir', '애쉬': 'Ashe', '아펠리오스': 'Aphelios',
-                '세라핀': 'Seraphine', '럭스': 'Lux', '노틸러스': 'Nautilus', '룰루': 'Lulu',
-                '볼리베어': 'Volibear', '탈론': 'Talon', '이블린': 'Evelynn',
-                '마오카이': 'Maokai', '누누와윌럼프': 'Nunu', '누누': 'Nunu', '흐웨이': 'Hwei',
-                '제라스': 'Xerath', '아리': 'Ahri', '리산드라': 'Lissandra',
-                '미스포츈': 'MissFortune', '라칸': 'Rakan', '니코': 'Neeko', '케넨': 'Kennen',
-                // 2025+2026 합산 모스트 추가
-                '스몰더': 'Smolder', '제드': 'Zed', '자헨': 'Zaahen', '카르마': 'Karma',
-                '징크스': 'Jinx', '알리스타': 'Alistar', '모데카이저': 'Mordekaiser',
-                '다이애나': 'Diana', '말자하': 'Malzahar', '요네': 'Yone',
-                '크산테': 'KSante', '아트록스': 'Aatrox', '세주아니': 'Sejuani',
-                '트런들': 'Trundle', '신짜오': 'XinZhao', '올라프': 'Olaf', '리신': 'LeeSin',
-                '판테온': 'Pantheon', '쓰레쉬': 'Thresh', '바드': 'Bard', '레오나': 'Leona',
-                '블리츠크랭크': 'Blitzcrank', '나서스': 'Nasus', '오공': 'MonkeyKing',
-                '비에고': 'Viego', '갈리오': 'Galio', '애니': 'Annie', '트리스타나': 'Tristana',
-                '진': 'Jhin', '아칼리': 'Akali', '오로라': 'Aurora', '암베사': 'Ambessa',
-                '벡스': 'Vex', '모르가나': 'Morgana', '직스': 'Ziggs', '브라움': 'Braum',
-                '그웬': 'Gwen', '케일': 'Kayle', '나폴': 'Nasus', '탐머스': 'TahmKench'
+        // 랭크 표시 포맷
+        function formatRank(rankData) {
+            if (!rankData || rankData.tier === 'UNRANKED') {
+                return { tier: '언랭크', lp: '', record: '', winrate: '' };
+            }
+            return {
+                tier: `${rankData.tier} ${rankData.rank}`,
+                lp: `${rankData.lp} LP`,
+                record: `${rankData.wins}승 ${rankData.losses}패`,
+                winrate: `${rankData.winRate}%`
             };
-            const engName = champMap[name] || name;
-            return `https://ddragon.leagueoflegends.com/cdn/16.1.1/img/champion/${engName}.png`;
         }
         
-        // 플레이어 카드 생성
-        function createPlayerCard(player) {
+        // 플레이어 카드 생성 (로딩 상태)
+        function createPlayerCardLoading(player) {
             const isLive = liveStatus[player.soop];
-            const tierIcon = getTierIcon(player.currentTier);
-            
-            let tierDisplay = player.currentTier || 'Unranked';
-            if (player.rankType) {
-                tierDisplay += ` (${player.rankType})`;
-            }
-            
-            const championsHtml = player.mostChampions?.slice(0, 3).map(champ => `
-                <div class="champion">
-                    <img class="champion-icon" src="${getChampionIcon(champ.name)}" alt="${champ.name}" onerror="this.style.display='none'">
-                    <span>${champ.name}</span>
-                    <span class="champion-games">${champ.games}판</span>
-                </div>
-            `).join('') || '';
             
             return `
-                <div class="player-card">
-                    <img class="player-avatar" src="${player.avatar}" alt="${player.name}" onerror="this.src='https://via.placeholder.com/60'">
-                    <div class="player-info">
-                        <div class="player-name">
-                            ${player.name}
-                            <span class="position-tag position-${player.position}">${player.position}</span>
-                        </div>
-                        <div class="player-nickname">${player.nickname}</div>
-                        <div class="champions">${championsHtml}</div>
-                        <div class="buttons">
-                            <a href="${player.soop}" target="_blank" class="btn btn-soop">↗ 방송국</a>
-                            ${isLive ? `<span class="live-badge">🔴 LIVE ${isLive.toLocaleString()}명</span>` : '<span class="offline-badge">● 오프라인</span>'}
+                <div class="player-card" id="player-${player.riotName.replace(/\s/g, '_')}">
+                    <div class="player-top-row">
+                        <img class="player-avatar" src="${player.avatar}" alt="${player.name}" onerror="this.src='https://via.placeholder.com/60'">
+                        <div class="player-info">
+                            <div class="player-name">
+                                ${player.name}
+                                <span class="position-tag position-${player.position}">${player.position}</span>
+                            </div>
+                            <div class="player-nickname">${player.riotName}#${player.riotTag}</div>
+                            <div class="badges">
+                                <a href="${player.soop}" target="_blank" class="btn-soop">↗ 방송국</a>
+                                ${isLive ? `<span class="live-badge">🔴 LIVE ${isLive.toLocaleString()}명</span>` : '<span class="offline-badge">● 오프라인</span>'}
+                            </div>
                         </div>
                     </div>
-                    <div class="player-stats">
-                        <div class="tier-info">
-                            ${player.currentTier && player.currentTier !== 'Unranked' ? `<img class="tier-icon" src="${tierIcon}" alt="${player.currentTier}">` : ''}
-                            <span class="tier-text">${player.currentTier || 'Unranked'}</span>
+                    <div class="rank-section">
+                        <div class="rank-box">
+                            <div class="rank-label">솔로랭크</div>
+                            <div class="rank-info"><span class="loading-text">로딩 중...</span></div>
                         </div>
-                        <div class="record">${player.record || '-'}</div>
-                        <div class="winrate">${player.winrate ? `승률 ${player.winrate}` : ''}</div>
-                        ${player.prevSeasonTier ? `<div class="prev-season">전시즌: ${player.prevSeasonTier}</div>` : ''}
+                        <div class="rank-box">
+                            <div class="rank-label">자유랭크</div>
+                            <div class="rank-info"><span class="loading-text">로딩 중...</span></div>
+                        </div>
                     </div>
                 </div>
             `;
         }
         
-        // 데이터 로드
-        async function loadData() {
+        // 플레이어 데이터 업데이트
+        async function updatePlayerCard(player) {
+            const cardId = `player-${player.riotName.replace(/\s/g, '_')}`;
+            const card = document.getElementById(cardId);
+            if (!card) return;
+            
             try {
-                const response = await fetch('data.json');
+                const response = await fetch(`${API_BASE}/api/player?name=${encodeURIComponent(player.riotName)}&tag=${encodeURIComponent(player.riotTag)}`);
                 const data = await response.json();
                 
-                // 마지막 업데이트
-                const updateDate = new Date(data.lastUpdated);
-                document.getElementById('updateTime').textContent = updateDate.toLocaleString('ko-KR');
+                if (data.error) {
+                    card.querySelector('.rank-section').innerHTML = `
+                        <div class="rank-box">
+                            <div class="error-text">오류: ${data.error}</div>
+                        </div>
+                    `;
+                    return;
+                }
                 
-                // 팀 렌더링
-                renderTeams(data.players);
+                // 게임 중이면 카드 스타일 변경
+                if (data.isInGame) {
+                    card.classList.add('ingame');
+                    const badges = card.querySelector('.badges');
+                    if (!badges.querySelector('.ingame-badge')) {
+                        badges.innerHTML += `<span class="ingame-badge">🎮 게임 중 (${data.currentGame?.championName || ''})</span>`;
+                    }
+                }
+                
+                const solo = formatRank(data.soloRank);
+                const flex = formatRank(data.flexRank);
+                
+                // 랭크 섹션 업데이트
+                card.querySelector('.rank-section').innerHTML = `
+                    <div class="rank-box">
+                        <div class="rank-label">솔로랭크</div>
+                        <div class="rank-info">
+                            <img class="tier-icon" src="${getTierIcon(data.soloRank?.tier)}" onerror="this.style.display='none'">
+                            <div class="rank-details">
+                                <div class="tier-text">${solo.tier}</div>
+                                ${solo.lp ? `<div class="lp-text">${solo.lp}</div>` : ''}
+                                ${solo.record ? `<div class="record-text">${solo.record} <span class="winrate-text">${solo.winrate}</span></div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rank-box">
+                        <div class="rank-label">자유랭크</div>
+                        <div class="rank-info">
+                            <img class="tier-icon" src="${getTierIcon(data.flexRank?.tier)}" onerror="this.style.display='none'">
+                            <div class="rank-details">
+                                <div class="tier-text">${flex.tier}</div>
+                                ${flex.lp ? `<div class="lp-text">${flex.lp}</div>` : ''}
+                                ${flex.record ? `<div class="record-text">${flex.record} <span class="winrate-text">${flex.winrate}</span></div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // 모스트 챔피언 추가
+                if (data.topChampions && data.topChampions.length > 0) {
+                    let champHtml = '<div class="champions-section"><div class="section-label">모스트 챔피언 (숙련도)</div><div class="champions">';
+                    for (const champ of data.topChampions) {
+                        const imgUrl = champ.championImage || `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${champ.championId}.png`;
+                        champHtml += `<img class="champion-icon" src="${imgUrl}" title="${champ.championName} (${Math.floor(champ.points/1000)}k점)" onerror="this.src='https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${champ.championId}.png'">`;
+                    }
+                    champHtml += '</div></div>';
+                    card.innerHTML += champHtml;
+                }
+                
+                // 최근 전적 추가
+                if (data.recentMatches && data.recentMatches.length > 0) {
+                    let matchHtml = '<div class="champions-section"><div class="section-label">최근 전적 (' + (data.recentStats?.wins || 0) + '승 ' + (data.recentStats?.losses || 0) + '패)</div><div class="recent-matches">';
+                    for (const match of data.recentMatches) {
+                        const imgUrl = match.championImage || `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${match.championId}.png`;
+                        matchHtml += `
+                            <div class="match-icon ${match.win ? 'win' : 'lose'}" title="${match.championName} ${match.kills}/${match.deaths}/${match.assists}">
+                                <img src="${imgUrl}" onerror="this.src='https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${match.championId}.png'">
+                            </div>
+                        `;
+                    }
+                    matchHtml += '</div></div>';
+                    card.innerHTML += matchHtml;
+                }
                 
             } catch (error) {
-                console.error('데이터 로드 실패:', error);
+                console.error(`${player.name} 로드 실패:`, error);
             }
-        }
-        
-        function renderTeams(players) {
-            const team1Html = players.team1.map(p => createPlayerCard(p)).join('');
-            const team2Html = players.team2.map(p => createPlayerCard(p)).join('');
-            
-            document.getElementById('team1Players').innerHTML = team1Html;
-            document.getElementById('team2Players').innerHTML = team2Html;
         }
         
         // SOOP 라이브 상태 확인
         async function checkLiveStatus() {
             const channels = [
-                'ecvhao', 'lilpa0309', 'toryvac', 'viichan6', 'gosegu2', '243000',
-                'devil0108', 'nmangoquince', 'danchu17', 'yeveee', 'insome0319', 'jaeparkk'
+                { id: 'ecvhao', url: 'https://ch.sooplive.co.kr/ecvhao' },
+                { id: 'lilpa0309', url: 'https://ch.sooplive.co.kr/lilpa0309' },
+                { id: 'toryvac', url: 'https://ch.sooplive.co.kr/toryvac' },
+                { id: 'viichan6', url: 'https://ch.sooplive.co.kr/viichan6' },
+                { id: 'gosegu2', url: 'https://ch.sooplive.co.kr/gosegu2' },
+                { id: '243000', url: 'https://ch.sooplive.co.kr/243000' },
+                { id: 'devil0108', url: 'https://ch.sooplive.co.kr/devil0108' },
+                { id: 'nmangoquince', url: 'https://ch.sooplive.co.kr/nmangoquince' },
+                { id: 'danchu17', url: 'https://ch.sooplive.co.kr/danchu17' },
+                { id: 'yeveee', url: 'https://ch.sooplive.co.kr/yeveee' },
+                { id: 'insome0319', url: 'https://ch.sooplive.co.kr/insome0319' },
+                { id: 'jaeparkk', url: 'https://ch.sooplive.co.kr/jaeparkk' }
             ];
             
             for (const channel of channels) {
                 try {
-                    const response = await fetch(`https://chapi.sooplive.co.kr/api/${channel}/station`);
+                    const response = await fetch(`https://chapi.sooplive.co.kr/api/${channel.id}/station`);
                     const data = await response.json();
                     if (data.broad) {
-                        liveStatus[`https://ch.sooplive.co.kr/${channel}`] = data.broad.current_sum_viewer || true;
+                        liveStatus[channel.url] = data.broad.current_sum_viewer || true;
                     }
                 } catch (e) {
                     // 무시
                 }
             }
-            
-            // 라이브 상태 업데이트 후 다시 렌더링
-            loadData();
         }
         
-        // 초기화
-        loadData();
-        checkLiveStatus();
+        // 초기 렌더링
+        async function init() {
+            // 라이브 상태 먼저 확인
+            await checkLiveStatus();
+            
+            // 카드 렌더링 (로딩 상태)
+            document.getElementById('team1Players').innerHTML = PLAYERS.team1.map(p => createPlayerCardLoading(p)).join('');
+            document.getElementById('team2Players').innerHTML = PLAYERS.team2.map(p => createPlayerCardLoading(p)).join('');
+            
+            // 순차적으로 API 호출 (Rate Limit 방지)
+            const allPlayers = [...PLAYERS.team1, ...PLAYERS.team2];
+            for (const player of allPlayers) {
+                await updatePlayerCard(player);
+                await new Promise(r => setTimeout(r, 300)); // 0.3초 딜레이
+            }
+            
+            document.getElementById('updateTime').textContent = `마지막 업데이트: ${new Date().toLocaleString('ko-KR')}`;
+        }
         
-        // 60초마다 라이브 상태 갱신
-        setInterval(checkLiveStatus, 60000);
+        // 시작
+        init();
+        
+        // 5분마다 자동 갱신
+        setInterval(() => {
+            checkLiveStatus();
+            init();
+        }, 300000);
     </script>
 </body>
 </html>
