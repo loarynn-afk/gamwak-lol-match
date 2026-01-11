@@ -43,7 +43,8 @@ async function getPlayerData(gameName, tagLine, apiKey) {
         summoner: null,
         rank: null,
         topChampions: [],
-        error: null
+        error: null,
+        debug: {} // 디버깅용
     };
     
     // 1. Riot ID로 PUUID 조회 (ACCOUNT-V1)
@@ -75,8 +76,12 @@ async function getPlayerData(gameName, tagLine, apiKey) {
     const leagueUrl = `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerData.id}?api_key=${apiKey}`;
     
     const leagueRes = await fetch(leagueUrl);
+    data.debug.leagueStatus = leagueRes.status; // 디버깅: HTTP 상태
+    
     if (leagueRes.ok) {
         const leagueData = await leagueRes.json();
+        data.debug.leagueData = leagueData; // 디버깅: 전체 응답
+        
         // 솔로랭크 찾기
         const soloRank = leagueData.find(q => q.queueType === 'RANKED_SOLO_5x5');
         if (soloRank) {
@@ -91,6 +96,10 @@ async function getPlayerData(gameName, tagLine, apiKey) {
         } else {
             data.rank = { tier: 'UNRANKED', rank: '', lp: 0, wins: 0, losses: 0, winRate: 0 };
         }
+    } else {
+        // API 실패해도 언랭크로 처리
+        data.rank = { tier: 'UNRANKED', rank: '', lp: 0, wins: 0, losses: 0, winRate: 0 };
+        data.debug.leagueError = `League API 실패: ${leagueRes.status}`;
     }
     
     // 4. 챔피언 숙련도 조회 (CHAMPION-MASTERY-V4) - 상위 3개
