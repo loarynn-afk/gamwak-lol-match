@@ -12,11 +12,9 @@
         "winrate": "67%",
         "prevSeasonTier": "BRONZE 2",
         "mostChampions": [
-          {"name": "문도박사", "games": 2},
-          {"name": "가렌", "games": 2},
-          {"name": "요릭", "games": 1},
-          {"name": "브라이어", "games": 1},
-          {"name": "바이", "games": 1}
+          {"name": "스몰더", "games": 13},
+          {"name": "제드", "games": 11},
+          {"name": "자헨", "games": 8}
         ],
         "soop": "https://ch.sooplive.co.kr/ecvhao",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg"
@@ -32,9 +30,9 @@
         "rankType": "자유랭크 Gold 3",
         "prevSeasonTier": "IRON 1",
         "mostChampions": [
-          {"name": "녹턴", "games": 3},
-          {"name": "말파이트", "games": 2},
-          {"name": "문도박사", "games": 1}
+          {"name": "녹턴", "games": 16},
+          {"name": "브라이어", "games": 13},
+          {"name": "말파이트", "games": 5}
         ],
         "soop": "https://ch.sooplive.co.kr/lilpa0309",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/li/lilpa0309/lilpa0309.jpg"
@@ -49,10 +47,9 @@
         "winrate": "58%",
         "prevSeasonTier": "SILVER 2",
         "mostChampions": [
-          {"name": "오리아나", "games": 7},
-          {"name": "빅토르", "games": 5},
-          {"name": "브라이어", "games": 4},
-          {"name": "베이가", "games": 3}
+          {"name": "룰루", "games": 15},
+          {"name": "오리아나", "games": 9},
+          {"name": "카르마", "games": 8}
         ],
         "soop": "https://ch.sooplive.co.kr/toryvac",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg"
@@ -67,10 +64,9 @@
         "winrate": "60%",
         "prevSeasonTier": "BRONZE 2",
         "mostChampions": [
-          {"name": "케이틀린", "games": 4},
-          {"name": "시비르", "games": 4},
-          {"name": "애쉬", "games": 3},
-          {"name": "아펠리오스", "games": 1}
+          {"name": "징크스", "games": 6},
+          {"name": "미스포츈", "games": 4},
+          {"name": "오리아나", "games": 4}
         ],
         "soop": "https://ch.sooplive.co.kr/viichan6",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg"
@@ -85,10 +81,9 @@
         "winrate": "80%",
         "prevSeasonTier": "BRONZE 4",
         "mostChampions": [
-          {"name": "세라핀", "games": 9},
-          {"name": "럭스", "games": 2},
-          {"name": "노틸러스", "games": 1},
-          {"name": "룰루", "games": 1}
+          {"name": "럭스", "games": 34},
+          {"name": "니코", "games": 33},
+          {"name": "녹턴", "games": 26}
         ],
         "soop": "https://ch.sooplive.co.kr/gosegu2",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/go/gosegu2/gosegu2.jpg"
@@ -103,11 +98,9 @@
         "winrate": "20%",
         "prevSeasonTier": "BRONZE 1",
         "mostChampions": [
-          {"name": "문도박사", "games": 2},
-          {"name": "가렌", "games": 2},
-          {"name": "볼리베어", "games": 1},
-          {"name": "바이", "games": 1},
-          {"name": "잭스", "games": 1}
+          {"name": "알리스타", "games": 7},
+          {"name": "녹턴", "games": 6},
+          {"name": "모데카이저", "games": 6}
         ],
         "soop": "https://ch.sooplive.co.kr/243000",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/24/243000/243000.jpg"
@@ -124,9 +117,9 @@
         "winrate": "38%",
         "prevSeasonTier": "IRON 3",
         "mostChampions": [
-          {"name": "탈론", "games": 11},
-          {"name": "이블린", "games": 2},
-          {"name": "녹턴", "games": 2}
+          {"name": "탈론", "games": 20},
+          {"name": "녹턴", "games": 10},
+          {"name": "가렌", "games": 9}
         ],
         "soop": "https://ch.sooplive.co.kr/devil0108",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg"
@@ -141,9 +134,9 @@
         "winrate": "52%",
         "prevSeasonTier": "IRON 4",
         "mostChampions": [
-          {"name": "말파이트", "games": 7},
-          {"name": "마오카이", "games": 6},
-          {"name": "누누와윌럼프", "games": 4}
+          {"name": "다이애나", "games": 17},
+          {"name": "녹턴", "games": 16},
+          {"name": "말파이트", "games": 10}
         ],
         "soop": "https://ch.sooplive.co.kr/nmangoquince",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg"
@@ -159,10 +152,9 @@
         "rankType": "자유랭크 Silver 3",
         "prevSeasonTier": "BRONZE 1",
         "mostChampions": [
-          {"name": "흐웨이", "games": 6},
-          {"name": "제라스", "games": 3},
-          {"name": "아리", "games": 1},
-          {"name": "리산드라", "games": 1}
+          {"name": "베이가", "games": 18},
+          {"name": "바이", "games": 12},
+          {"name": "미스포츈", "games": 11}
         ],
         "soop": "https://ch.sooplive.co.kr/danchu17",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg"
@@ -178,9 +170,9 @@
         "rankType": "자유랭크 Bronze 1",
         "prevSeasonTier": "SILVER 4",
         "mostChampions": [
-          {"name": "미스포츈", "games": 2},
-          {"name": "흐웨이", "games": 2},
-          {"name": "애쉬", "games": 1}
+          {"name": "미스포츈", "games": 7},
+          {"name": "아리", "games": 3},
+          {"name": "말자하", "games": 2}
         ],
         "soop": "https://ch.sooplive.co.kr/yeveee",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg"
@@ -196,11 +188,9 @@
         "rankType": "자유랭크 Silver 4",
         "prevSeasonTier": "",
         "mostChampions": [
+          {"name": "노틸러스", "games": 4},
           {"name": "라칸", "games": 3},
-          {"name": "니코", "games": 2},
-          {"name": "세라핀", "games": 1},
-          {"name": "노틸러스", "games": 1},
-          {"name": "룰루", "games": 1}
+          {"name": "니코", "games": 2}
         ],
         "soop": "https://ch.sooplive.co.kr/insome0319",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/in/insome0319/insome0319.jpg"
@@ -215,10 +205,9 @@
         "winrate": "40%",
         "prevSeasonTier": "SILVER 3",
         "mostChampions": [
-          {"name": "잭스", "games": 2},
-          {"name": "문도박사", "games": 1},
-          {"name": "말파이트", "games": 1},
-          {"name": "케넨", "games": 1}
+          {"name": "요네", "games": 69},
+          {"name": "크산테", "games": 23},
+          {"name": "아트록스", "games": 19}
         ],
         "soop": "https://ch.sooplive.co.kr/jaeparkk",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ja/jaeparkk/jaeparkk.jpg"
