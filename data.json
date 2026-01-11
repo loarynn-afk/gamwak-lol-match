@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-11T19:30:00",
+  "lastUpdated": "2026-01-11T20:00:00",
   "players": {
     "team1": [
       {
@@ -9,8 +9,8 @@
         "currentTier": "BRONZE 4",
         "record": "3승 2패 (60%)",
         "mostChampions": ["문도박사", "블라디미르", "모데카이저"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/wg/woowakgood/woowakgood.jpg",
-        "soop": "https://www.sooplive.co.kr/woowakgood"
+        "soop": "https://ch.sooplive.co.kr/ecvhao",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg"
       },
       {
         "name": "릴파",
@@ -19,8 +19,8 @@
         "currentTier": "Unranked",
         "record": "",
         "mostChampions": ["녹턴", "말파이트", "문도박사"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/li/lilpaaaaaa/lilpaaaaaa.jpg",
-        "soop": "https://www.sooplive.co.kr/lilpaaaaaa"
+        "soop": "https://ch.sooplive.co.kr/lilpa0309",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/li/lilpa0309/lilpa0309.jpg"
       },
       {
         "name": "빅토리",
@@ -29,8 +29,8 @@
         "currentTier": "GOLD 4",
         "record": "2승 5패 (29%)",
         "mostChampions": ["오리아나", "빅토르", "브라이어"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/gi/giregi_v/giregi_v.jpg",
-        "soop": "https://www.sooplive.co.kr/giregi_v"
+        "soop": "https://ch.sooplive.co.kr/toryvac",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg"
       },
       {
         "name": "비챤",
@@ -39,8 +39,8 @@
         "currentTier": "BRONZE 1",
         "record": "5승 3패 (63%)",
         "mostChampions": ["시비르", "애쉬", "아펠리오스"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg",
-        "soop": "https://www.sooplive.co.kr/viichan6"
+        "soop": "https://ch.sooplive.co.kr/viichan6",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg"
       },
       {
         "name": "고세구",
@@ -49,8 +49,8 @@
         "currentTier": "BRONZE 4",
         "record": "4승 1패 (80%)",
         "mostChampions": ["세라핀", "럭스", "노틸러스"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/go/gosegugosegu/gosegugosegu.jpg",
-        "soop": "https://www.sooplive.co.kr/gosegugosegu"
+        "soop": "https://ch.sooplive.co.kr/gosegu2",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/go/gosegu2/gosegu2.jpg"
       },
       {
         "name": "천양",
@@ -59,8 +59,8 @@
         "currentTier": "BRONZE 2",
         "record": "1승 4패 (20%)",
         "mostChampions": ["말파이트", "신짜오", "오공"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/sh/shydoo77/shydoo77.jpg",
-        "soop": "https://www.sooplive.co.kr/shydoo77"
+        "soop": "https://ch.sooplive.co.kr/243000",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/24/243000/243000.jpg"
       }
     ],
     "team2": [
@@ -71,8 +71,8 @@
         "currentTier": "BRONZE 4",
         "record": "3승 5패 (38%)",
         "mostChampions": ["이블린", "탈론", "말파이트"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/dj/djgamst/djgamst.jpg",
-        "soop": "https://www.sooplive.co.kr/djgamst"
+        "soop": "https://ch.sooplive.co.kr/devil0108",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg"
       },
       {
         "name": "망구랑",
@@ -81,8 +81,8 @@
         "currentTier": "IRON 2",
         "record": "12승 24패 (33%)",
         "mostChampions": ["말파이트", "마오카이", "누누와윌럼프"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/dl/dlwnd852/dlwnd852.jpg",
-        "soop": "https://www.sooplive.co.kr/dlwnd852"
+        "soop": "https://ch.sooplive.co.kr/nmangoquince",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg"
       },
       {
         "name": "단츄",
@@ -91,8 +91,8 @@
         "currentTier": "Unranked",
         "record": "",
         "mostChampions": ["제라스", "아리", "리산드라"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchuchu/danchuchu.jpg",
-        "soop": "https://www.sooplive.co.kr/danchuchu"
+        "soop": "https://ch.sooplive.co.kr/danchu17",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg"
       },
       {
         "name": "유설아",
@@ -101,8 +101,8 @@
         "currentTier": "Unranked",
         "record": "",
         "mostChampions": ["미스포츈", "애쉬", "시비르"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/th/thseolaa/thseolaa.jpg",
-        "soop": "https://www.sooplive.co.kr/thseolaa"
+        "soop": "https://ch.sooplive.co.kr/yeveee",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg"
       },
       {
         "name": "따린",
@@ -111,8 +111,8 @@
         "currentTier": "Unranked",
         "record": "",
         "mostChampions": ["라칸", "니코", "노틸러스"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/zz/zzangddarin/zzangddarin.jpg",
-        "soop": "https://www.sooplive.co.kr/zzangddarin"
+        "soop": "https://ch.sooplive.co.kr/insome0319",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/in/insome0319/insome0319.jpg"
       },
       {
         "name": "박재박",
@@ -121,8 +121,8 @@
         "currentTier": "BRONZE 1",
         "record": "6승 9패 (40%)",
         "mostChampions": ["잭스", "문도박사", "말파이트"],
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/eh/ehdtn0824/ehdtn0824.jpg",
-        "soop": "https://www.sooplive.co.kr/ehdtn0824"
+        "soop": "https://ch.sooplive.co.kr/jaeparkk",
+        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ja/jaeparkk/jaeparkk.jpg"
       }
     ]
   }
