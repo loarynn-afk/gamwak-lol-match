@@ -640,7 +640,7 @@
             const allPlayers = [...PLAYERS.team1, ...PLAYERS.team2];
             for (const player of allPlayers) {
                 await updatePlayerCard(player);
-                await new Promise(r => setTimeout(r, 300)); // 0.3초 딜레이
+                await new Promise(r => setTimeout(r, 1500)); // 1.5초 딜레이 (Rate Limit 방지)
             }
             
             document.getElementById('updateTime').textContent = `마지막 업데이트: ${new Date().toLocaleString('ko-KR')}`;
