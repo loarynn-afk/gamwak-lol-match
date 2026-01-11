@@ -37,8 +37,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 10px;
+            flex-wrap: wrap;
         }
         
         .back-btn {
@@ -84,6 +85,30 @@
         
         .reset-btn:hover {
             background: #dc2626;
+        }
+        
+        /* 팀 스왑 버튼 */
+        .swap-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .swap-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #4f46e5);
+            transform: scale(1.05);
+        }
+        
+        .swap-btn .icon {
+            font-size: 1.1rem;
         }
         
         /* 메인 레이아웃 */
@@ -492,6 +517,9 @@
             <a href="index.html" class="back-btn">← 돌아가기</a>
             <div class="phase-display" id="phaseDisplay">블루팀 1차 밴</div>
             <div class="timer-display" id="timerDisplay">30</div>
+            <button class="swap-btn" onclick="swapTeams()">
+                <span class="icon">🔄</span> 블루↔레드 스왑
+            </button>
             <button class="reset-btn" onclick="resetBanpick()">초기화</button>
         </div>
     </div>
@@ -500,7 +528,7 @@
     <div class="main-container">
         <!-- 블루팀 -->
         <div class="team-side blue">
-            <div class="team-name">🔵 우왁굳 팀</div>
+            <div class="team-name" id="blueTeamName">🔵 우왁굳 팀</div>
             
             <div class="ban-section">
                 <div class="section-label">BAN</div>
@@ -546,7 +574,7 @@
         
         <!-- 레드팀 -->
         <div class="team-side red">
-            <div class="team-name">🔴 감스트 팀</div>
+            <div class="team-name" id="redTeamName">🔴 감스트 팀</div>
             
             <div class="ban-section">
                 <div class="section-label">BAN</div>
@@ -581,26 +609,38 @@
     </div>
 
     <script>
-        // 감왁 내전 선수 데이터
-        const blueTeam = [
-            { name: "우왁굳", position: "탑", most: ["블라디미르", "문도박사", "모데카이저"] },
-            { name: "릴파", position: "정글", most: ["녹턴", "말파이트", "문도박사"] },
-            { name: "빅토리", position: "미드", most: ["오리아나", "빅토르", "베이가"] },
-            { name: "비챤", position: "원딜", most: ["아펠리오스", "시비르", "애쉬"] },
-            { name: "고세구", position: "서폿", most: ["세라핀", "럭스", "노틸러스"] }
+        // 우왁굳 팀 (2025+2026 합산 모스트)
+        const wakTeam = [
+            { name: "우왁굳", position: "탑", most: ["스몰더", "제드", "자헨"] },
+            { name: "릴파", position: "정글", most: ["녹턴", "브라이어", "말파이트"] },
+            { name: "빅토리", position: "미드", most: ["룰루", "오리아나", "카르마"] },
+            { name: "비챤", position: "원딜", most: ["징크스", "미스포츈", "오리아나"] },
+            { name: "고세구", position: "서폿", most: ["럭스", "니코", "녹턴"] }
         ];
         
-        const redTeam = [
-            { name: "감스트", position: "정글", most: ["이블린", "탈론", "말파이트"] },
-            { name: "망구랑", position: "정글", most: ["마오카이", "말파이트", "누누와윌럼프"] },
-            { name: "단츄", position: "미드", most: ["제라스", "아리", "리산드라"] },
-            { name: "유설아", position: "원딜", most: ["미스포츈", "흐웨이", "애쉬"] },
-            { name: "따린", position: "서폿", most: ["라칸", "니코", "노틸러스"] }
+        // 감스트 팀 (2025+2026 합산 모스트)
+        const gamTeam = [
+            { name: "감스트", position: "탑", most: ["탈론", "녹턴", "가렌"] },
+            { name: "망구랑", position: "정글", most: ["다이애나", "녹턴", "말파이트"] },
+            { name: "단츄", position: "미드", most: ["베이가", "바이", "미스포츈"] },
+            { name: "유설아", position: "원딜", most: ["미스포츈", "아리", "말자하"] },
+            { name: "따린", position: "서폿", most: ["노틸러스", "라칸", "니코"] }
         ];
+        
+        // 팀 배치 상태 (true = 우왁굳팀이 블루)
+        let wakIsBlue = true;
+        
+        // 현재 블루/레드 팀 참조
+        let blueTeam = wakTeam;
+        let redTeam = gamTeam;
         
         // 모든 선수의 모스트 챔피언 수집
-        const allMostChampions = new Set();
-        [...blueTeam, ...redTeam].forEach(p => p.most.forEach(c => allMostChampions.add(c)));
+        function getAllMostChampions() {
+            const all = new Set();
+            [...blueTeam, ...redTeam].forEach(p => p.most.forEach(c => all.add(c)));
+            return all;
+        }
+        let allMostChampions = getAllMostChampions();
         
         // 밴픽 순서 (토너먼트 드래프트)
         const banpickOrder = [
@@ -633,68 +673,42 @@
         // 상태
         let currentStep = 0;
         let selectedChampion = null;
+        let selectedChampionImage = null;
         let usedChampions = new Set();
         let champions = [];
         let timer = 30;
         let timerInterval = null;
         
-        // 챔피언 영문-한글 매핑
-        const championNames = {
-            "Garen": "가렌", "Galio": "갈리오", "Gangplank": "갱플랭크", "Gragas": "그라가스",
-            "Graves": "그레이브즈", "Gwen": "그웬", "Gnar": "나르", "Nami": "나미",
-            "Nasus": "나서스", "Naafiri": "나피리", "Nautilus": "노틸러스", "Nocturne": "녹턴",
-            "Nunu": "누누와윌럼프", "Nidalee": "니달리", "Nilah": "닐라", "Neeko": "니코",
-            "Darius": "다리우스", "Diana": "다이애나", "Draven": "드레이븐", "Ryze": "라이즈",
-            "Rakan": "라칸", "Rammus": "람머스", "Lux": "럭스", "Rumble": "럼블",
-            "Renata": "레나타 글라스크", "Renekton": "레넥톤", "Leona": "레오나", "RekSai": "렉사이",
-            "Rell": "렐", "Rengar": "렝가", "Lucian": "루시안", "Lulu": "룰루",
-            "Leblanc": "르블랑", "LeeSin": "리 신", "Riven": "리븐", "Lissandra": "리산드라",
-            "Lillia": "릴리아", "MasterYi": "마스터 이", "Maokai": "마오카이", "Malzahar": "말자하",
-            "Malphite": "말파이트", "Mordekaiser": "모데카이저", "Morgana": "모르가나", "DrMundo": "문도박사",
-            "MissFortune": "미스포츈", "Milio": "밀리오", "Bard": "바드", "Varus": "바루스",
-            "Vi": "바이", "Veigar": "베이가", "Vayne": "베인", "Vex": "벡스",
-            "Belveth": "벨베스", "Velkoz": "벨코즈", "Volibear": "볼리베어", "Braum": "브라움",
-            "Briar": "브라이어", "Brand": "브랜드", "Vladimir": "블라디미르", "Blitzcrank": "블리츠크랭크",
-            "Viego": "비에고", "Viktor": "빅토르", "Poppy": "뽀삐", "Samira": "사미라",
-            "Sion": "사이온", "Sylas": "사일러스", "Shaco": "샤코", "Senna": "세나",
-            "Seraphine": "세라핀", "Sejuani": "세주아니", "Sett": "세트", "Sona": "소나",
-            "Soraka": "소라카", "Shen": "쉔", "Shyvana": "쉬바나", "Smolder": "스몰더",
-            "Swain": "스웨인", "Skarner": "스카너", "Sivir": "시비르", "XinZhao": "신짜오",
-            "Syndra": "신드라", "Singed": "신지드", "Thresh": "쓰레쉬", "Ahri": "아리",
-            "Amumu": "아무무", "AurelionSol": "아우렐리온 솔", "Ivern": "아이번", "Azir": "아지르",
-            "Akali": "아칼리", "Akshan": "아크샨", "Aatrox": "아트록스", "Aphelios": "아펠리오스",
-            "Alistar": "알리스타", "Ambessa": "암베사", "Annie": "애니", "Anivia": "애니비아",
-            "Ashe": "애쉬", "Yasuo": "야스오", "Ekko": "에코", "Elise": "엘리스",
-            "MonkeyKing": "오공", "Aurora": "오로라", "Ornn": "오른", "Orianna": "오리아나",
-            "Olaf": "올라프", "Yone": "요네", "Yorick": "요릭", "Udyr": "우디르",
-            "Urgot": "우르곳", "Warwick": "워윅", "Yuumi": "유미", "Irelia": "이렐리아",
-            "Evelynn": "이블린", "Ezreal": "이즈리얼", "Illaoi": "일라오이", "JarvanIV": "자르반 4세",
-            "Xayah": "자야", "Zyra": "자이라", "Zac": "자크", "Janna": "잔나",
-            "Jax": "잭스", "Zed": "제드", "Xerath": "제라스", "Zeri": "제리",
-            "Jayce": "제이스", "Zoe": "조이", "Ziggs": "직스", "Jhin": "진",
-            "Zilean": "질리언", "Jinx": "징크스", "Chogath": "초가스", "Karma": "카르마",
-            "Camille": "카밀", "Kassadin": "카사딘", "Karthus": "카서스", "Cassiopeia": "카시오페아",
-            "Kaisa": "카이사", "Khazix": "카직스", "Katarina": "카타리나", "Kalista": "칼리스타",
-            "Kennen": "케넨", "Caitlyn": "케이틀린", "Kayn": "케인", "Kayle": "케일",
-            "KogMaw": "코그모", "Corki": "코르키", "Quinn": "퀸", "KSante": "크산테",
-            "Kled": "클레드", "Qiyana": "키아나", "Kindred": "킨드레드", "Taric": "타릭",
-            "Talon": "탈론", "Taliyah": "탈리야", "TahmKench": "탐켄치", "Trundle": "트런들",
-            "Tristana": "트리스타나", "Tryndamere": "트린다미어", "TwistedFate": "트위스티드 페이트",
-            "Twitch": "트위치", "Teemo": "티모", "Pyke": "파이크", "Pantheon": "판테온",
-            "Fiddlesticks": "피들스틱", "Fiora": "피오라", "Fizz": "피즈", "Heimerdinger": "하이머딩거",
-            "Hecarim": "헤카림", "Hwei": "흐웨이", "Mel": "멜", "Yunara": "유나라"
-        };
+        // 팀 스왑 기능
+        function swapTeams() {
+            wakIsBlue = !wakIsBlue;
+            
+            if (wakIsBlue) {
+                blueTeam = wakTeam;
+                redTeam = gamTeam;
+                document.getElementById('blueTeamName').textContent = '🔵 우왁굳 팀';
+                document.getElementById('redTeamName').textContent = '🔴 감스트 팀';
+            } else {
+                blueTeam = gamTeam;
+                redTeam = wakTeam;
+                document.getElementById('blueTeamName').textContent = '🔵 감스트 팀';
+                document.getElementById('redTeamName').textContent = '🔴 우왁굳 팀';
+            }
+            
+            allMostChampions = getAllMostChampions();
+            resetBanpick();
+        }
         
         // DDragon에서 챔피언 로드
         async function loadChampions() {
             try {
-                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/16.1.1/data/ko_KR/champion.json');
+                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/14.24.1/data/ko_KR/champion.json');
                 const data = await response.json();
                 
                 champions = Object.values(data.data).map(champ => ({
                     id: champ.id,
                     name: champ.name,
-                    image: `https://ddragon.leagueoflegends.com/cdn/16.1.1/img/champion/${champ.id}.png`
+                    image: `https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/${champ.id}.png`
                 }));
                 
                 // 가나다순 정렬
