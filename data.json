@@ -1,214 +1,185 @@
 {
-  "lastUpdated": "2025-01-10T20:00:00+09:00",
+  "updated_at": "2026-01-11T04:19:04.081182",
   "players": {
-    "team1": [
-      {
-        "name": "우왁굳",
-        "nickname": "메시아빠우왁굳 #kr1",
-        "soop": "https://ch.sooplive.co.kr/ecvhao",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg",
-        "position": "탑",
-        "currentTier": "Unranked",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Bronze 2",
-        "bestTierSeason": "S2019",
-        "bestTier": "Bronze 2",
-        "mostChampions": [
-          {"name": "블라디미르", "games": 1},
-          {"name": "문도박사", "games": 1},
-          {"name": "모데카이저", "games": 1}
-        ]
-      },
-      {
-        "name": "릴파",
-        "nickname": "내가바로릴파다 #kr1",
-        "soop": "https://ch.sooplive.co.kr/lilpa0309",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/li/lilpa0309/lilpa0309.jpg",
-        "position": "정글",
-        "currentTier": "Unranked",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Iron 1",
-        "bestTierSeason": "S2022",
-        "bestTier": "Gold 4",
-        "mostChampions": [
-          {"name": "녹턴", "games": 3},
-          {"name": "말파이트", "games": 2},
-          {"name": "문도박사", "games": 1}
-        ]
-      },
-      {
-        "name": "빅토리",
-        "nickname": "VicTory #0219",
-        "soop": "https://ch.sooplive.co.kr/toryvac",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg",
-        "position": "미드",
-        "currentTier": "Unranked",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Silver 2",
-        "bestTierSeason": "S2024-2",
-        "bestTier": "Silver 2",
-        "mostChampions": [
-          {"name": "오리아나", "games": 5},
-          {"name": "빅토르", "games": 4},
-          {"name": "베이가", "games": 2}
-        ]
-      },
-      {
-        "name": "비챤",
-        "nickname": "빛 챤 #xoxv",
-        "soop": "https://ch.sooplive.co.kr/viichan6",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg",
-        "position": "원딜",
-        "currentTier": "Unranked",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Bronze 2",
-        "bestTierSeason": "S2024-2",
-        "bestTier": "Bronze 2",
-        "mostChampions": [
-          {"name": "아펠리오스", "games": 2},
-          {"name": "시비르", "games": 1},
-          {"name": "애쉬", "games": 1}
-        ]
-      },
-      {
-        "name": "고세구",
-        "nickname": "레츠고세구 #KR1",
-        "soop": "https://ch.sooplive.co.kr/gosegu2",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/go/gosegu2/gosegu2.jpg",
-        "position": "서폿",
-        "currentTier": "Bronze 4 97LP",
-        "record": "4승 1패",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Bronze 4",
-        "bestTierSeason": "S2021",
-        "bestTier": "Bronze 4",
-        "mostChampions": [
-          {"name": "세라핀", "games": 7},
-          {"name": "럭스", "games": 1},
-          {"name": "노틸러스", "games": 1}
-        ]
-      },
-      {
-        "name": "천양",
-        "nickname": "돈까스 #kr1",
-        "soop": "https://ch.sooplive.co.kr/243000",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/24/243000/243000.jpg",
-        "position": "정글",
-        "currentTier": "Bronze 2 60LP",
-        "record": "1승 4패",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Bronze 1",
-        "bestTierSeason": "S2019",
-        "bestTier": "Platinum 4",
-        "mostChampions": [
-          {"name": "말파이트", "games": 4},
-          {"name": "신짜오", "games": 2},
-          {"name": "오공", "games": 1}
-        ]
-      }
-    ],
-    "team2": [
-      {
-        "name": "감스트",
-        "nickname": "정글의신 #1094",
-        "soop": "https://ch.sooplive.co.kr/devil0108",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg",
-        "position": "정글",
-        "currentTier": "Bronze 4 23LP",
-        "record": "3승 5패",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Iron 3",
-        "bestTierSeason": "S2019",
-        "bestTier": "Bronze 4",
-        "mostChampions": [
-          {"name": "이블린", "games": 2},
-          {"name": "탈론", "games": 2},
-          {"name": "말파이트", "games": 1}
-        ]
-      },
-      {
-        "name": "망구랑",
-        "nickname": "cs못먹어서미안해 #MGR",
-        "soop": "https://ch.sooplive.co.kr/nmangoquince",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg",
-        "position": "정글",
-        "currentTier": "Bronze 4 21LP",
-        "record": "4승 7패",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Iron 4",
-        "bestTierSeason": "S2024-1",
-        "bestTier": "Iron 3",
-        "mostChampions": [
-          {"name": "마오카이", "games": 9},
-          {"name": "말파이트", "games": 6},
-          {"name": "누누와윌럼프", "games": 3}
-        ]
-      },
-      {
-        "name": "단츄",
-        "nickname": "단바오 #owo",
-        "soop": "https://ch.sooplive.co.kr/danchu17",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg",
-        "position": "미드",
-        "currentTier": "Unranked",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Bronze 1",
-        "bestTierSeason": "S2019",
-        "bestTier": "Gold 4",
-        "mostChampions": [
-          {"name": "제라스", "games": 1},
-          {"name": "아리", "games": 1},
-          {"name": "리산드라", "games": 1}
-        ]
-      },
-      {
-        "name": "유설아",
-        "nickname": "장카유설아 #1445",
-        "soop": "https://ch.sooplive.co.kr/yeveee",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg",
-        "position": "원딜",
-        "currentTier": "Unranked",
-        "lastSeason": "S2024-1",
-        "lastSeasonTier": "Silver 4",
-        "bestTierSeason": "S2020",
-        "bestTier": "Gold 3",
-        "mostChampions": [
-          {"name": "미스포츈", "games": 2},
-          {"name": "흐웨이", "games": 2},
-          {"name": "애쉬", "games": 1}
-        ]
-      },
-      {
-        "name": "따린",
-        "nickname": "무슨 생각일까 #KR1",
-        "soop": "https://ch.sooplive.co.kr/insome0319",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/in/insome0319/insome0319.jpg",
-        "position": "서폿",
-        "currentTier": "Unranked",
-        "mostChampions": [
-          {"name": "라칸", "games": 2},
-          {"name": "니코", "games": 2},
-          {"name": "노틸러스", "games": 1}
-        ]
-      },
-      {
-        "name": "박재박",
-        "nickname": "올리비아재 #박재박",
-        "soop": "https://ch.sooplive.co.kr/jaeparkk",
-        "avatar": "https://profile.img.sooplive.co.kr/LOGO/ja/jaeparkk/jaeparkk.jpg",
-        "position": "탑",
-        "currentTier": "Bronze 1 61LP",
-        "record": "4승 4패",
-        "lastSeason": "S2024-2",
-        "lastSeasonTier": "Silver 3",
-        "bestTierSeason": "S2021",
-        "bestTier": "Silver 2",
-        "mostChampions": [
-          {"name": "잭스", "games": 1},
-          {"name": "문도박사", "games": 1},
-          {"name": "케넨", "games": 1}
-        ]
-      }
-    ]
+    "우왁굳": {
+      "name": "우왁굳",
+      "riot_id": "메시아빠우왁굳",
+      "tag": "KR1",
+      "team": "wak",
+      "position": "탑",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:05.283413",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%A9%94%EC%8B%9C%EC%95%84%EB%B9%A0%EC%9A%B0%EC%99%81%EA%B5%B3-KR1"
+    },
+    "릴파": {
+      "name": "릴파",
+      "riot_id": "내가바로 릴파다",
+      "tag": "KR1",
+      "team": "wak",
+      "position": "정글",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:09.083296",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%82%B4%EA%B0%80%EB%B0%94%EB%A1%9C%20%EB%A6%B4%ED%8C%8C%EB%8B%A4-KR1"
+    },
+    "빅토리": {
+      "name": "빅토리",
+      "riot_id": "ViCTory",
+      "tag": "0219",
+      "team": "wak",
+      "position": "미드",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:12.735896",
+      "opgg_url": "https://www.op.gg/summoners/kr/ViCTory-0219"
+    },
+    "비챤": {
+      "name": "비챤",
+      "riot_id": "빛 챤",
+      "tag": "xoxv",
+      "team": "wak",
+      "position": "원딜",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:16.387840",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%B9%9B%20%EC%B1%A4-xoxv"
+    },
+    "고세구": {
+      "name": "고세구",
+      "riot_id": "레츠고세구",
+      "tag": "KR1",
+      "team": "wak",
+      "position": "서포터",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:20.948316",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%A0%88%EC%B8%A0%EA%B3%A0%EC%84%B8%EA%B5%AC-KR1"
+    },
+    "천양": {
+      "name": "천양",
+      "riot_id": "돈까스",
+      "tag": "KR1",
+      "team": "wak",
+      "position": "후보",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:24.660821",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%8F%88%EA%B9%8C%EC%8A%A4-KR1"
+    },
+    "감스트": {
+      "name": "감스트",
+      "riot_id": "정글의신",
+      "tag": "1094",
+      "team": "gam",
+      "position": "탑",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:28.315579",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EC%A0%95%EA%B8%80%EC%9D%98%EC%8B%A0-1094"
+    },
+    "망구랑": {
+      "name": "망구랑",
+      "riot_id": "cs못먹어서미안해",
+      "tag": "MGR",
+      "team": "gam",
+      "position": "정글",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:32.058109",
+      "opgg_url": "https://www.op.gg/summoners/kr/cs%EB%AA%BB%EB%A8%B9%EC%96%B4%EC%84%9C%EB%AF%B8%EC%95%88%ED%95%B4-MGR"
+    },
+    "단츄": {
+      "name": "단츄",
+      "riot_id": "단바오",
+      "tag": "owo",
+      "team": "gam",
+      "position": "미드",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:35.700778",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%8B%A8%EB%B0%94%EC%98%A4-owo"
+    },
+    "유설아": {
+      "name": "유설아",
+      "riot_id": "정카유설아",
+      "tag": "1445",
+      "team": "gam",
+      "position": "원딜",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:39.310781",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EC%A0%95%EC%B9%B4%EC%9C%A0%EC%84%A4%EC%95%84-1445"
+    },
+    "따린": {
+      "name": "따린",
+      "riot_id": "무슨 생각일까",
+      "tag": "KR1",
+      "team": "gam",
+      "position": "서포터",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:42.945505",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EB%AC%B4%EC%8A%A8%20%EC%83%9D%EA%B0%81%EC%9D%BC%EA%B9%8C-KR1"
+    },
+    "박재박": {
+      "name": "박재박",
+      "riot_id": "올리비아재",
+      "tag": "박재박",
+      "team": "gam",
+      "position": "후보",
+      "tier": "Unranked",
+      "division": "",
+      "lp": "0",
+      "wins": 0,
+      "losses": 0,
+      "winrate": 0,
+      "updated": "2026-01-11T04:19:46.615295",
+      "opgg_url": "https://www.op.gg/summoners/kr/%EC%98%AC%EB%A6%AC%EB%B9%84%EC%95%84%EC%9E%AC-박재박"
+    }
   }
 }
