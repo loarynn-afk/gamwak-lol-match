@@ -1,9 +1,9 @@
-name: Update LoL Stats
+name: Update Riot Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 매일 오전 9시 (KST)
-  workflow_dispatch:  # 수동 실행
+    - cron: '*/5 * * * *'  # 5분마다 실행
+  workflow_dispatch:  # 수동 실행 가능
 
 jobs:
   update-stats:
@@ -13,20 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: npm install node-fetch@2
       
-      - name: Run scraper
-        run: python scraper.py
+      - name: Fetch Riot API data
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: node scripts/fetch-riot-data.js
       
-      - name: Commit and push changes
+      - name: Commit and push if changed
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
           git add data.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update player stats - $(date +'%Y-%m-%d %H:%M')" && git push)
+          git diff --staged --quiet || git commit -m "Update player stats [skip ci]"
+          git push
