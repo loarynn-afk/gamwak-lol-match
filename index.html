@@ -373,18 +373,31 @@
         // 챔피언 아이콘 URL
         function getChampionIcon(name) {
             const champMap = {
+                // 기존
                 '문도박사': 'DrMundo', '가렌': 'Garen', '요릭': 'Yorick', '브라이어': 'Briar',
                 '바이': 'Vi', '잭스': 'Jax', '녹턴': 'Nocturne', '말파이트': 'Malphite',
                 '오리아나': 'Orianna', '빅토르': 'Viktor', '베이가': 'Veigar',
                 '케이틀린': 'Caitlyn', '시비르': 'Sivir', '애쉬': 'Ashe', '아펠리오스': 'Aphelios',
                 '세라핀': 'Seraphine', '럭스': 'Lux', '노틸러스': 'Nautilus', '룰루': 'Lulu',
                 '볼리베어': 'Volibear', '탈론': 'Talon', '이블린': 'Evelynn',
-                '마오카이': 'Maokai', '누누와윌럼프': 'Nunu', '흐웨이': 'Hwei',
+                '마오카이': 'Maokai', '누누와윌럼프': 'Nunu', '누누': 'Nunu', '흐웨이': 'Hwei',
                 '제라스': 'Xerath', '아리': 'Ahri', '리산드라': 'Lissandra',
-                '미스포츈': 'MissFortune', '라칸': 'Rakan', '니코': 'Neeko', '케넨': 'Kennen'
+                '미스포츈': 'MissFortune', '라칸': 'Rakan', '니코': 'Neeko', '케넨': 'Kennen',
+                // 2025+2026 합산 모스트 추가
+                '스몰더': 'Smolder', '제드': 'Zed', '자헨': 'Zaahen', '카르마': 'Karma',
+                '징크스': 'Jinx', '알리스타': 'Alistar', '모데카이저': 'Mordekaiser',
+                '다이애나': 'Diana', '말자하': 'Malzahar', '요네': 'Yone',
+                '크산테': 'KSante', '아트록스': 'Aatrox', '세주아니': 'Sejuani',
+                '트런들': 'Trundle', '신짜오': 'XinZhao', '올라프': 'Olaf', '리신': 'LeeSin',
+                '판테온': 'Pantheon', '쓰레쉬': 'Thresh', '바드': 'Bard', '레오나': 'Leona',
+                '블리츠크랭크': 'Blitzcrank', '나서스': 'Nasus', '오공': 'MonkeyKing',
+                '비에고': 'Viego', '갈리오': 'Galio', '애니': 'Annie', '트리스타나': 'Tristana',
+                '진': 'Jhin', '아칼리': 'Akali', '오로라': 'Aurora', '암베사': 'Ambessa',
+                '벡스': 'Vex', '모르가나': 'Morgana', '직스': 'Ziggs', '브라움': 'Braum',
+                '그웬': 'Gwen', '케일': 'Kayle', '나폴': 'Nasus', '탐머스': 'TahmKench'
             };
             const engName = champMap[name] || name;
-            return `https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${engName}.png`;
+            return `https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/${engName}.png`;
         }
         
         // 플레이어 카드 생성
