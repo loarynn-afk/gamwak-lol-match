@@ -702,13 +702,13 @@
         // DDragon에서 챔피언 로드
         async function loadChampions() {
             try {
-                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/14.24.1/data/ko_KR/champion.json');
+                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/16.1.1/data/ko_KR/champion.json');
                 const data = await response.json();
                 
                 champions = Object.values(data.data).map(champ => ({
                     id: champ.id,
                     name: champ.name,
-                    image: `https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/${champ.id}.png`
+                    image: `https://ddragon.leagueoflegends.com/cdn/16.1.1/img/champion/${champ.id}.png`
                 }));
                 
                 // 가나다순 정렬
