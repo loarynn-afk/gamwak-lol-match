@@ -169,8 +169,8 @@ async function getPlayerData(gameName, tagLine, apiKey) {
     if (matchListRes.ok) {
         const matchIds = await matchListRes.json();
         
-        // 최근 10게임 상세 조회 (표시용)
-        const matchPromises = matchIds.slice(0, 10).map(async (matchId) => {
+        // 최근 5게임 상세 조회 (표시용 - Rate Limit 방지)
+        const matchPromises = matchIds.slice(0, 5).map(async (matchId) => {
             try {
                 const matchUrl = `https://asia.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${apiKey}`;
                 const matchRes = await fetch(matchUrl);
