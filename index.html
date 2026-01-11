@@ -330,9 +330,9 @@
         
         <div class="vs-section">
             <div class="vs-text">VS</div>
-            <button class="swap-btn" id="swapBtn" onclick="swapTeams()">
-                🔄 블루/레드 팀 교환
-            </button>
+            <a href="banpick.html" class="swap-btn" style="text-decoration: none;">
+                🎯 모의 밴픽
+            </a>
         </div>
         
         <div class="teams-wrapper" id="teamsWrapper">
@@ -359,7 +359,6 @@
     </div>
     
     <script>
-        let teamsSwapped = false;
         let liveStatus = {};
         
         // 티어 아이콘 URL
@@ -423,7 +422,7 @@
                     </div>
                     <div class="player-stats">
                         <div class="tier-info">
-                            <img class="tier-icon" src="${tierIcon}" alt="${player.currentTier}">
+                            ${player.currentTier && player.currentTier !== 'Unranked' ? `<img class="tier-icon" src="${tierIcon}" alt="${player.currentTier}">` : ''}
                             <span class="tier-text">${player.currentTier || 'Unranked'}</span>
                         </div>
                         <div class="record">${player.record || '-'}</div>
@@ -458,27 +457,6 @@
             
             document.getElementById('team1Players').innerHTML = team1Html;
             document.getElementById('team2Players').innerHTML = team2Html;
-        }
-        
-        // 팀 교환
-        function swapTeams() {
-            teamsSwapped = !teamsSwapped;
-            
-            const wrapper = document.getElementById('teamsWrapper');
-            const team1 = document.getElementById('team1Container');
-            const team2 = document.getElementById('team2Container');
-            
-            if (teamsSwapped) {
-                wrapper.insertBefore(team2, team1);
-                document.getElementById('team1Side').textContent = '레드';
-                document.getElementById('team2Side').textContent = '블루';
-                document.getElementById('swapBtn').textContent = '🔄 원래대로';
-            } else {
-                wrapper.insertBefore(team1, team2);
-                document.getElementById('team1Side').textContent = '블루';
-                document.getElementById('team2Side').textContent = '레드';
-                document.getElementById('swapBtn').textContent = '🔄 블루/레드 팀 교환';
-            }
         }
         
         // SOOP 라이브 상태 확인
