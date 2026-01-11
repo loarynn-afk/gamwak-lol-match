@@ -1,24 +1,21 @@
 // Vercel Serverless Function - Riot API 호출 (풀버전)
 // 사용법: /api/player?name=단바오&tag=owo
 
-// 챔피언 ID → 이름 매핑 (Data Dragon에서 가져옴)
+// 챔피언 ID → 이름 매핑
 let championData = null;
 
 async function getChampionData() {
     if (championData) return championData;
     
     try {
-        // 최신 버전 확인
         const versionRes = await fetch('https://ddragon.leagueoflegends.com/api/versions.json');
         const versions = await versionRes.json();
         const latestVersion = versions[0];
         
-        // 챔피언 데이터 가져오기
         const champRes = await fetch(`https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion.json`);
         const champJson = await champRes.json();
         
-        // ID → 이름 매핑 생성
-        championData = {};
+        championData = { version: latestVersion };
         for (const [key, value] of Object.entries(champJson.data)) {
             championData[value.key] = {
                 id: key,
@@ -28,12 +25,11 @@ async function getChampionData() {
         }
         return championData;
     } catch (e) {
-        return {};
+        return { version: '14.24.1' };
     }
 }
 
 module.exports = async function handler(req, res) {
-    // CORS 설정
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET');
     
@@ -67,19 +63,19 @@ module.exports = async function handler(req, res) {
 };
 
 async function getPlayerData(gameName, tagLine, apiKey) {
-    // 챔피언 데이터 미리 로드
     const champions = await getChampionData();
     
     const data = {
         riotId: `${gameName}#${tagLine}`,
         puuid: null,
         summoner: null,
-        soloRank: null,      // 솔로랭크
-        flexRank: null,      // 자유랭크
-        topChampions: [],    // 모스트 챔피언
-        recentMatches: [],   // 최근 전적
-        isInGame: false,     // 현재 게임 중 여부
-        currentGame: null,   // 현재 게임 정보
+        soloRank: null,
+        flexRank: null,
+        topChampions: [],
+        recentMatches: [],
+        recentStats: null,  // 최근 게임 통계
+        isInGame: false,
+        currentGame: null,
         error: null
     };
     
@@ -106,17 +102,16 @@ async function getPlayerData(gameName, tagLine, apiKey) {
         name: summonerData.name || gameName,
         level: summonerData.summonerLevel,
         profileIconId: summonerData.profileIconId,
-        profileIconUrl: `https://ddragon.leagueoflegends.com/cdn/14.24.1/img/profileicon/${summonerData.profileIconId}.png`
+        profileIconUrl: `https://ddragon.leagueoflegends.com/cdn/${champions.version || '14.24.1'}/img/profileicon/${summonerData.profileIconId}.png`
     };
     
-    // 3. 랭크 정보 조회 (솔로랭크 + 자유랭크)
+    // 3. 랭크 정보 조회
     const leagueUrl = `https://kr.api.riotgames.com/lol/league/v4/entries/by-puuid/${data.puuid}?api_key=${apiKey}`;
     
     const leagueRes = await fetch(leagueUrl);
     if (leagueRes.ok) {
         const leagueData = await leagueRes.json();
         
-        // 솔로랭크
         const soloRank = leagueData.find(q => q.queueType === 'RANKED_SOLO_5x5');
         if (soloRank) {
             data.soloRank = {
@@ -131,7 +126,6 @@ async function getPlayerData(gameName, tagLine, apiKey) {
             data.soloRank = { tier: 'UNRANKED', rank: '', lp: 0, wins: 0, losses: 0, winRate: 0 };
         }
         
-        // 자유랭크
         const flexRank = leagueData.find(q => q.queueType === 'RANKED_FLEX_SR');
         if (flexRank) {
             data.flexRank = {
@@ -168,15 +162,15 @@ async function getPlayerData(gameName, tagLine, apiKey) {
         });
     }
     
-    // 5. 최근 전적 조회 (최근 10게임)
-    const matchListUrl = `https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/${data.puuid}/ids?start=0&count=10&api_key=${apiKey}`;
+    // 5. 최근 20게임 전적 조회
+    const matchListUrl = `https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/${data.puuid}/ids?start=0&count=20&api_key=${apiKey}`;
     
     const matchListRes = await fetch(matchListUrl);
     if (matchListRes.ok) {
         const matchIds = await matchListRes.json();
         
-        // 최근 5게임만 상세 조회 (API 호출 제한 고려)
-        const matchPromises = matchIds.slice(0, 5).map(async (matchId) => {
+        // 최근 10게임 상세 조회 (표시용)
+        const matchPromises = matchIds.slice(0, 10).map(async (matchId) => {
             try {
                 const matchUrl = `https://asia.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${apiKey}`;
                 const matchRes = await fetch(matchUrl);
@@ -192,7 +186,8 @@ async function getPlayerData(gameName, tagLine, apiKey) {
                 return {
                     matchId: matchId,
                     gameMode: matchData.info.gameMode,
-                    gameDuration: Math.floor(matchData.info.gameDuration / 60), // 분 단위
+                    queueId: matchData.info.queueId,
+                    gameDuration: Math.floor(matchData.info.gameDuration / 60),
                     gameEndTimestamp: matchData.info.gameEndTimestamp,
                     win: participant.win,
                     championId: participant.championId,
@@ -203,16 +198,7 @@ async function getPlayerData(gameName, tagLine, apiKey) {
                     assists: participant.assists,
                     kda: participant.deaths === 0 ? 'Perfect' : ((participant.kills + participant.assists) / participant.deaths).toFixed(2),
                     cs: participant.totalMinionsKilled + participant.neutralMinionsKilled,
-                    visionScore: participant.visionScore,
-                    items: [
-                        participant.item0,
-                        participant.item1,
-                        participant.item2,
-                        participant.item3,
-                        participant.item4,
-                        participant.item5,
-                        participant.item6
-                    ]
+                    visionScore: participant.visionScore
                 };
             } catch (e) {
                 return null;
@@ -221,9 +207,29 @@ async function getPlayerData(gameName, tagLine, apiKey) {
         
         const matches = await Promise.all(matchPromises);
         data.recentMatches = matches.filter(m => m !== null);
+        
+        // 최근 게임 통계 계산
+        if (data.recentMatches.length > 0) {
+            const wins = data.recentMatches.filter(m => m.win).length;
+            const losses = data.recentMatches.length - wins;
+            const totalKills = data.recentMatches.reduce((sum, m) => sum + m.kills, 0);
+            const totalDeaths = data.recentMatches.reduce((sum, m) => sum + m.deaths, 0);
+            const totalAssists = data.recentMatches.reduce((sum, m) => sum + m.assists, 0);
+            
+            data.recentStats = {
+                games: data.recentMatches.length,
+                wins: wins,
+                losses: losses,
+                winRate: Math.round((wins / data.recentMatches.length) * 100),
+                avgKills: (totalKills / data.recentMatches.length).toFixed(1),
+                avgDeaths: (totalDeaths / data.recentMatches.length).toFixed(1),
+                avgAssists: (totalAssists / data.recentMatches.length).toFixed(1),
+                avgKDA: totalDeaths === 0 ? 'Perfect' : ((totalKills + totalAssists) / totalDeaths).toFixed(2)
+            };
+        }
     }
     
-    // 6. 현재 게임 중인지 확인 (Spectator-V5)
+    // 6. 현재 게임 중인지 확인
     const spectatorUrl = `https://kr.api.riotgames.com/lol/spectator/v5/active-games/by-summoner/${data.puuid}?api_key=${apiKey}`;
     
     const spectatorRes = await fetch(spectatorUrl);
@@ -231,7 +237,6 @@ async function getPlayerData(gameName, tagLine, apiKey) {
         const spectatorData = await spectatorRes.json();
         data.isInGame = true;
         
-        // 현재 게임 정보
         const currentPlayer = spectatorData.participants.find(p => p.puuid === data.puuid);
         const champ = currentPlayer ? (champions[currentPlayer.championId] || {}) : {};
         
@@ -240,9 +245,10 @@ async function getPlayerData(gameName, tagLine, apiKey) {
             gameMode: spectatorData.gameMode,
             gameType: spectatorData.gameType,
             gameStartTime: spectatorData.gameStartTime,
-            gameLength: spectatorData.gameLength, // 초 단위
+            gameLength: spectatorData.gameLength,
             championId: currentPlayer?.championId,
             championName: champ.name || `Champion ${currentPlayer?.championId}`,
+            championImage: champ.image || '',
             teamId: currentPlayer?.teamId
         };
     } else {
