@@ -1,7 +1,7 @@
 // Vercel Serverless Function - Riot API 호출
 // 사용법: /api/player?name=단바오&tag=owo
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     // CORS 설정
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET');
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
             tag: tag
         });
     }
-}
+};
 
 async function getPlayerData(gameName, tagLine, apiKey) {
     const data = {
