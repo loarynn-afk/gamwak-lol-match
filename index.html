@@ -3,148 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>감왁 롤 내전</title>
-    <meta name="description" content="감왁 롤 내전 - 5판 3선승제 매치업 분석">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>감왁 롤 내전 - 매치업 분석</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             color: #fff;
             padding: 20px;
         }
         
-        .container { max-width: 1400px; margin: 0 auto; }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
         
-        h1 {
+        .header {
             text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #ff6b35, #f7c94b);
+            background: linear-gradient(135deg, #f97316, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .subtitle {
-            text-align: center;
-            color: #888;
             margin-bottom: 10px;
         }
         
-        .data-notice {
-            text-align: center;
-            color: #666;
-            font-size: 0.75rem;
-            margin-bottom: 20px;
-        }
-        
-        .banpick-link-btn {
-            display: block;
-            max-width: 400px;
-            margin: 0 auto 20px;
-            padding: 16px 30px;
-            background: linear-gradient(135deg, #ff6b35, #f7c94b);
-            border: none;
-            border-radius: 12px;
-            color: #000;
-            font-weight: bold;
-            font-size: 1.1rem;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            animation: pulse-btn 2s infinite;
-        }
-        
-        .banpick-link-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 25px rgba(255,107,53,0.5);
-        }
-        
-        @keyframes pulse-btn {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(255,107,53,0); }
-        }
-        
-        .match-info {
-            text-align: center;
-            margin-bottom: 15px;
-            padding: 12px 20px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 25px;
-        }
-        
-        .match-info h2 {
-            font-size: 1rem;
-            color: #fff;
-        }
-        
-        .warning-text {
-            text-align: center;
-            color: #ff6b6b;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            padding: 10px;
-            background: rgba(255,107,107,0.1);
-            border-radius: 8px;
-        }
-        
-        .vs-text {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
+        .header p {
             color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .vs-section {
+            text-align: center;
             margin: 20px 0;
         }
         
-        .teams-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+        .vs-text {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f97316, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .team {
-            background: rgba(30, 30, 40, 0.8);
-            border-radius: 15px;
-            overflow: hidden;
+        .swap-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .swap-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .teams-wrapper {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .team-container {
+            flex: 1;
+            max-width: 600px;
+            min-width: 300px;
         }
         
         .team-header {
+            padding: 15px 20px;
+            border-radius: 12px 12px 0 0;
             text-align: center;
-            padding: 15px;
         }
         
         .team1 .team-header {
-            background: linear-gradient(135deg, #f7931a, #ff6b35);
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
         }
         
         .team2 .team-header {
-            background: linear-gradient(135deg, #00b4d8, #0077b6);
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
         }
         
-        .team-header h3 { font-size: 1.3rem; }
-        .team-header .leader { font-size: 0.85rem; opacity: 0.9; }
-        
-        .players-list { padding: 15px; }
-        
-        .player-card {
+        .team-header h2 {
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            padding: 14px;
-            margin-bottom: 12px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            transition: all 0.2s;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .team-header .side-tag {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        
+        .team-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .players-list {
+            background: #1e293b;
+            border-radius: 0 0 12px 12px;
+            padding: 15px;
+        }
+        
+        .player-card {
+            background: #334155;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s;
         }
         
         .player-card:hover {
-            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
         }
         
         .player-avatar {
@@ -152,71 +148,47 @@
             height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 14px;
-            border: 2px solid #444;
+            border: 3px solid #4a5568;
         }
         
-        .player-info { flex: 1; }
+        .player-info {
+            flex: 1;
+        }
         
         .player-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 3px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+        
+        .position-tag {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .position-탑 { background: #ef4444; }
+        .position-정글 { background: #22c55e; }
+        .position-미드 { background: #3b82f6; }
+        .position-원딜 { background: #eab308; color: #000; }
+        .position-서폿 { background: #06b6d4; }
+        .position-후보 { background: #6b7280; }
         
         .player-nickname {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 2px;
         }
         
-        .position-badge {
-            display: inline-block;
-            font-size: 0.85rem;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-        
-        .pos-top { background: #f39c12; color: #000; }
-        .pos-jungle { background: #27ae60; color: #fff; }
-        .pos-mid { background: #3498db; color: #fff; }
-        .pos-adc { background: #e74c3c; color: #fff; }
-        .pos-support { background: #9b59b6; color: #fff; }
-        
-        .champion-icons {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-        }
-        
-        .champ-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-        
-        .champion-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 6px;
-            background: #333;
-            border: 1px solid #555;
-        }
-        
-        .champ-games {
-            font-size: 0.65rem;
-            color: #888;
-            white-space: nowrap;
-        }
-        
-        .player-tier {
+        .player-stats {
             text-align: right;
-            min-width: 140px;
+            min-width: 120px;
         }
         
-        .tier-display {
+        .tier-info {
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -224,445 +196,320 @@
         }
         
         .tier-icon {
-            width: 42px;
-            height: 42px;
-        }
-        
-        .tier-icon-small {
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
-            margin-right: 2px;
+            width: 32px;
+            height: 32px;
         }
         
         .tier-text {
-            font-size: 1rem;
-            font-weight: 600;
+            font-weight: bold;
+            font-size: 0.95rem;
         }
         
-        .tier-iron { color: #8b8b8b; }
-        .tier-bronze { color: #cd7f32; }
-        .tier-silver { color: #c0c0c0; }
-        .tier-gold { color: #ffd700; }
-        .tier-platinum { color: #00cec9; }
-        .tier-emerald { color: #00b894; }
-        .tier-diamond { color: #74b9ff; }
-        .tier-unranked { 
-            color: #888;
-            background: rgba(100,100,100,0.3);
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .tier-record {
+        .record {
             font-size: 0.85rem;
-            color: #888;
-            text-align: right;
+            color: #94a3b8;
             margin-top: 3px;
         }
         
-        .best-season {
-            font-size: 0.75rem;
-            color: #aaa;
-            text-align: right;
-            margin-top: 4px;
-        }
-        
-        .best-season span {
-            color: #f7c94b;
-            font-weight: 500;
-        }
-        
-        .best-tier {
-            font-size: 0.75rem;
-            color: #aaa;
-            text-align: right;
-            margin-top: 2px;
-        }
-        
-        .best-tier span {
-            color: #74b9ff;
-            font-weight: 500;
-        }
-        
-        .soop-btn {
-            display: inline-block;
-            margin-top: 10px;
-            margin-right: 8px;
-            padding: 5px 12px;
-            background: linear-gradient(135deg, #5865F2, #7289DA);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
+        .winrate {
             font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.2s;
+            color: #22c55e;
         }
         
-        .soop-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
-        }
-        
-        .live-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 10px;
-            padding: 4px 10px;
-            border-radius: 6px;
+        .prev-season {
             font-size: 0.75rem;
-            font-weight: 600;
-            text-decoration: none;
+            color: #64748b;
+            margin-top: 3px;
         }
         
-        .live-status.live {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: #fff;
-            animation: pulse 2s infinite;
-            cursor: pointer;
-        }
-        
-        .live-status.live:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.5);
-        }
-        
-        .live-status.offline {
-            background: rgba(100, 100, 100, 0.5);
-            color: #aaa;
-        }
-        
-        .live-status.loading {
-            background: rgba(100, 100, 100, 0.3);
-            color: #888;
-        }
-        
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #fff;
-        }
-        
-        .live-status.live .live-dot {
-            animation: blink 1s infinite;
-        }
-        
-        .live-status.offline .live-dot {
-            background: #666;
-        }
-        
-        .live-viewer {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.8);
-            margin-left: 3px;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(231, 76, 60, 0); }
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .btn-row {
+        .champions {
             display: flex;
+            gap: 5px;
+            margin-top: 8px;
             flex-wrap: wrap;
+        }
+        
+        .champion {
+            display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 3px;
+            background: #1e293b;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+        }
+        
+        .champion-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        .champion-games {
+            color: #94a3b8;
+            font-size: 0.7rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 8px;
             margin-top: 8px;
         }
         
-        @media (max-width: 900px) {
-            .teams-container { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
+        .btn {
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
         }
         
-        .last-updated {
+        .btn:hover {
+            opacity: 0.8;
+        }
+        
+        .btn-soop {
+            background: #5c3dff;
+            color: white;
+        }
+        
+        .live-badge {
+            background: #ef4444;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .offline-badge {
+            background: #4a5568;
+            color: #94a3b8;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+        
+        .footer {
             text-align: center;
-            color: #555;
-            font-size: 0.8rem;
             margin-top: 30px;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .teams-wrapper {
+                flex-direction: column;
+            }
+            
+            .player-card {
+                flex-wrap: wrap;
+            }
+            
+            .player-stats {
+                width: 100%;
+                text-align: left;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>감왁 롤 내전</h1>
-        <p class="subtitle">우왁굳 팀 vs 감스트 팀</p>
-        <p class="data-notice">※ 현재 사용 중인 계정 기준 · 전시즌/최고티어는 해당 계정의 기록입니다</p>
-        
-        <div class="match-info">
-            <h2>🏆 5판 3선승제 | 2패시 후보 투입 가능</h2>
+        <div class="header">
+            <h1>🎮 감왁 롤 내전</h1>
+            <p>우왁굳 팀 vs 감스트 팀 - 5판 3선승제</p>
+            <p id="lastUpdated"></p>
         </div>
         
-        <a href="banpick.html" class="banpick-link-btn">🎯 모의 밴픽 시작하기</a>
+        <div class="vs-section">
+            <div class="vs-text">VS</div>
+            <button class="swap-btn" id="swapBtn" onclick="swapTeams()">
+                🔄 블루/레드 팀 교환
+            </button>
+        </div>
         
-        <p class="warning-text">⚠️ 포지션은 변경될 수 있습니다</p>
-        
-        <div class="vs-text">VS</div>
-        
-        <div class="teams-container">
-            <div class="team team1">
+        <div class="teams-wrapper" id="teamsWrapper">
+            <div class="team-container team1" id="team1Container">
                 <div class="team-header">
-                    <h3>🔥 우왁굳 팀</h3>
-                    <span class="leader">리더: 우왁굳</span>
+                    <h2>🔥 우왁굳 팀 <span class="side-tag" id="team1Side">블루</span></h2>
+                    <p>리더: 우왁굳</p>
                 </div>
-                <div class="players-list" id="team1-players"></div>
+                <div class="players-list" id="team1Players"></div>
             </div>
             
-            <div class="team team2">
+            <div class="team-container team2" id="team2Container">
                 <div class="team-header">
-                    <h3>⚡ 감스트 팀</h3>
-                    <span class="leader">리더: 감스트</span>
+                    <h2>⚡ 감스트 팀 <span class="side-tag" id="team2Side">레드</span></h2>
+                    <p>리더: 감스트</p>
                 </div>
-                <div class="players-list" id="team2-players"></div>
+                <div class="players-list" id="team2Players"></div>
             </div>
         </div>
         
-        <p class="last-updated" id="lastUpdated"></p>
+        <div class="footer">
+            <p>데이터 출처: DeepLOL | 마지막 업데이트: <span id="updateTime"></span></p>
+        </div>
     </div>
-
+    
     <script>
-        // 챔피언 한글 -> 영문 매핑
-        const championEnglish = {
-            "블라디미르": "Vladimir", "문도박사": "DrMundo", "모데카이저": "Mordekaiser",
-            "녹턴": "Nocturne", "말파이트": "Malphite", "세라핀": "Seraphine",
-            "럭스": "Lux", "노틸러스": "Nautilus", "아펠리오스": "Aphelios",
-            "시비르": "Sivir", "애쉬": "Ashe", "신짜오": "XinZhao",
-            "오공": "MonkeyKing", "오리아나": "Orianna", "빅토르": "Viktor",
-            "베이가": "Veigar", "이블린": "Evelynn", "탈론": "Talon",
-            "마오카이": "Maokai", "누누와윌럼프": "Nunu", "제라스": "Xerath",
-            "아리": "Ahri", "리산드라": "Lissandra", "잭스": "Jax",
-            "케넨": "Kennen", "블리츠크랭크": "Blitzcrank", "흐웨이": "Hwei",
-            "라칸": "Rakan", "니코": "Neeko", "브라이어": "Briar",
-            "룰루": "Lulu", "레오나": "Leona", "브라움": "Braum",
-            "제드": "Zed", "이즈리얼": "Ezreal", "아칼리": "Akali",
-            "벨코즈": "Velkoz", "킨드레드": "Kindred", "유미": "Yuumi",
-            "미스포츈": "MissFortune"
-        };
+        let teamsSwapped = false;
+        let liveStatus = {};
         
-        // 티어 이미지 URL
-        const tierIcons = {
-            "iron": "https://opgg-static.akamaized.net/images/medals_new/iron.png?image=q_auto:good,f_png,w_144",
-            "bronze": "https://opgg-static.akamaized.net/images/medals_new/bronze.png?image=q_auto:good,f_png,w_144",
-            "silver": "https://opgg-static.akamaized.net/images/medals_new/silver.png?image=q_auto:good,f_png,w_144",
-            "gold": "https://opgg-static.akamaized.net/images/medals_new/gold.png?image=q_auto:good,f_png,w_144",
-            "platinum": "https://opgg-static.akamaized.net/images/medals_new/platinum.png?image=q_auto:good,f_png,w_144",
-            "emerald": "https://opgg-static.akamaized.net/images/medals_new/emerald.png?image=q_auto:good,f_png,w_144",
-            "diamond": "https://opgg-static.akamaized.net/images/medals_new/diamond.png?image=q_auto:good,f_png,w_144",
-            "master": "https://opgg-static.akamaized.net/images/medals_new/master.png?image=q_auto:good,f_png,w_144",
-            "grandmaster": "https://opgg-static.akamaized.net/images/medals_new/grandmaster.png?image=q_auto:good,f_png,w_144",
-            "challenger": "https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto:good,f_png,w_144"
-        };
+        // 티어 아이콘 URL
+        function getTierIcon(tier) {
+            const tierLower = tier?.toLowerCase().split(' ')[0] || 'unranked';
+            if (tierLower === 'unranked' || tierLower === '') {
+                return 'https://opgg-static.akamaized.net/images/medals_new/default.png';
+            }
+            return `https://opgg-static.akamaized.net/images/medals_new/${tierLower}.png`;
+        }
         
+        // 챔피언 아이콘 URL
         function getChampionIcon(name) {
-            const eng = championEnglish[name] || name;
-            return `https://ddragon.leagueoflegends.com/cdn/16.1.1/img/champion/${eng}.png`;
-        }
-        
-        function getTierInfo(tier) {
-            if (!tier || tier === 'Unranked') {
-                return { class: 'tier-unranked', icon: null, text: 'Unranked' };
-            }
-            const t = tier.toLowerCase();
-            let tierName = '';
-            if (t.includes('iron')) tierName = 'iron';
-            else if (t.includes('bronze')) tierName = 'bronze';
-            else if (t.includes('silver')) tierName = 'silver';
-            else if (t.includes('gold')) tierName = 'gold';
-            else if (t.includes('platinum')) tierName = 'platinum';
-            else if (t.includes('emerald')) tierName = 'emerald';
-            else if (t.includes('diamond')) tierName = 'diamond';
-            else if (t.includes('master')) tierName = 'master';
-            else if (t.includes('grandmaster')) tierName = 'grandmaster';
-            else if (t.includes('challenger')) tierName = 'challenger';
-            
-            return {
-                class: `tier-${tierName || 'unranked'}`,
-                icon: tierIcons[tierName] || null,
-                text: tier
+            const champMap = {
+                '문도박사': 'DrMundo', '가렌': 'Garen', '요릭': 'Yorick', '브라이어': 'Briar',
+                '바이': 'Vi', '잭스': 'Jax', '녹턴': 'Nocturne', '말파이트': 'Malphite',
+                '오리아나': 'Orianna', '빅토르': 'Viktor', '베이가': 'Veigar',
+                '케이틀린': 'Caitlyn', '시비르': 'Sivir', '애쉬': 'Ashe', '아펠리오스': 'Aphelios',
+                '세라핀': 'Seraphine', '럭스': 'Lux', '노틸러스': 'Nautilus', '룰루': 'Lulu',
+                '볼리베어': 'Volibear', '탈론': 'Talon', '이블린': 'Evelynn',
+                '마오카이': 'Maokai', '누누와윌럼프': 'Nunu', '흐웨이': 'Hwei',
+                '제라스': 'Xerath', '아리': 'Ahri', '리산드라': 'Lissandra',
+                '미스포츈': 'MissFortune', '라칸': 'Rakan', '니코': 'Neeko', '케넨': 'Kennen'
             };
+            const engName = champMap[name] || name;
+            return `https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${engName}.png`;
         }
         
-        function getPositionClass(pos) {
-            const map = { '탑': 'top', '정글': 'jungle', '미드': 'mid', '원딜': 'adc', '서폿': 'support' };
-            return map[pos] || 'mid';
-        }
-        
-        function renderPlayer(player) {
-            const tierInfo = getTierInfo(player.currentTier);
+        // 플레이어 카드 생성
+        function createPlayerCard(player) {
+            const isLive = liveStatus[player.soop];
+            const tierIcon = getTierIcon(player.currentTier);
             
-            // 챔피언 아이콘 + 게임 수 표시
-            const champIcons = (player.mostChampions || []).map((c, idx) => {
-                const champName = typeof c === 'object' ? c.name : c;
-                const games = typeof c === 'object' ? c.games : (player.championGames ? player.championGames[idx] : null);
-                const gamesText = games ? `<span class="champ-games">${games}판</span>` : '';
-                return `<div class="champ-wrap">
-                    <img class="champion-icon" src="${getChampionIcon(champName)}" alt="${champName}" title="${champName}" onerror="this.style.display='none'">
-                    ${gamesText}
-                </div>`;
-            }).join('');
-            
-            const tierIconHtml = tierInfo.icon 
-                ? `<img class="tier-icon" src="${tierInfo.icon}" alt="${tierInfo.text}">`
-                : '';
-            
-            const defaultAvatar = `https://via.placeholder.com/60/333/fff?text=${encodeURIComponent(player.name[0])}`;
-            
-            // 시즌 표시: S2023-2 → S2023 (년도만)
-            let lastSeasonHtml = '';
-            if (player.lastSeason) {
-                const seasonText = player.lastSeason.replace(/-\d+$/g, '');
-                const lastTierName = player.lastSeasonTier.split(' ')[0].toLowerCase();
-                const lastTierIcon = tierIcons[lastTierName] ? `<img class="tier-icon-small" src="${tierIcons[lastTierName]}" alt="">` : '';
-                lastSeasonHtml = `<div class="best-season">전시즌: ${lastTierIcon}<span>${player.lastSeasonTier} (${seasonText})</span></div>`;
-            } else if (player.bestSeason) {
-                // 이전 데이터 호환성
-                const seasonText = player.bestSeason.replace(/-\d+\)/g, ')');
-                lastSeasonHtml = `<div class="best-season">전시즌: <span>${seasonText}</span></div>`;
+            let tierDisplay = player.currentTier || 'Unranked';
+            if (player.rankType) {
+                tierDisplay += ` (${player.rankType})`;
             }
             
-            // 최고 티어 표시
-            let bestTierHtml = '';
-            if (player.bestTier && player.bestTierSeason) {
-                const seasonText = player.bestTierSeason.replace(/-\d+$/g, '');
-                const bestTierName = player.bestTier.split(' ')[0].toLowerCase();
-                const bestTierIcon = tierIcons[bestTierName] ? `<img class="tier-icon-small" src="${tierIcons[bestTierName]}" alt="">` : '';
-                bestTierHtml = `<div class="best-tier">최고티어: ${bestTierIcon}<span>${player.bestTier} (${seasonText})</span></div>`;
-            }
-            
-            // SOOP URL에서 ID 추출
-            const soopId = player.soop.split('/').pop();
+            const championsHtml = player.mostChampions?.slice(0, 3).map(champ => `
+                <div class="champion">
+                    <img class="champion-icon" src="${getChampionIcon(champ.name)}" alt="${champ.name}" onerror="this.style.display='none'">
+                    <span>${champ.name}</span>
+                    <span class="champion-games">${champ.games}판</span>
+                </div>
+            `).join('') || '';
             
             return `
-                <div class="player-card" data-soop-id="${soopId}">
-                    <img class="player-avatar" src="${player.avatar}" alt="${player.name}" onerror="this.src='${defaultAvatar}'">
+                <div class="player-card">
+                    <img class="player-avatar" src="${player.avatar}" alt="${player.name}" onerror="this.src='https://via.placeholder.com/60'">
                     <div class="player-info">
-                        <div class="player-name">${player.name}</div>
+                        <div class="player-name">
+                            ${player.name}
+                            <span class="position-tag position-${player.position}">${player.position}</span>
+                        </div>
                         <div class="player-nickname">${player.nickname}</div>
-                        <span class="position-badge pos-${getPositionClass(player.position)}">${player.position}</span>
-                        <div class="champion-icons">${champIcons}</div>
-                        <div class="btn-row">
-                            <a href="${player.soop}" target="_blank" class="soop-btn">📺 방송국</a>
-                            <span class="live-status loading" id="live-${soopId}">
-                                <span class="live-dot"></span>
-                                확인중...
-                            </span>
+                        <div class="champions">${championsHtml}</div>
+                        <div class="buttons">
+                            <a href="${player.soop}" target="_blank" class="btn btn-soop">↗ 방송국</a>
+                            ${isLive ? `<span class="live-badge">🔴 LIVE ${isLive.toLocaleString()}명</span>` : '<span class="offline-badge">● 오프라인</span>'}
                         </div>
                     </div>
-                    <div class="player-tier">
-                        <div class="tier-display">
-                            ${tierIconHtml}
-                            <span class="tier-text ${tierInfo.class}">${tierInfo.text}</span>
+                    <div class="player-stats">
+                        <div class="tier-info">
+                            <img class="tier-icon" src="${tierIcon}" alt="${player.currentTier}">
+                            <span class="tier-text">${player.currentTier || 'Unranked'}</span>
                         </div>
-                        ${player.record ? `<div class="tier-record">${player.record}</div>` : ''}
-                        ${lastSeasonHtml}
-                        ${bestTierHtml}
+                        <div class="record">${player.record || '-'}</div>
+                        <div class="winrate">${player.winrate ? `승률 ${player.winrate}` : ''}</div>
+                        ${player.prevSeasonTier ? `<div class="prev-season">전시즌: ${player.prevSeasonTier}</div>` : ''}
                     </div>
                 </div>
             `;
         }
         
+        // 데이터 로드
         async function loadData() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
                 
-                document.getElementById('team1-players').innerHTML = 
-                    data.players.team1.map(renderPlayer).join('');
-                document.getElementById('team2-players').innerHTML = 
-                    data.players.team2.map(renderPlayer).join('');
+                // 마지막 업데이트
+                const updateDate = new Date(data.lastUpdated);
+                document.getElementById('updateTime').textContent = updateDate.toLocaleString('ko-KR');
                 
-                if (data.lastUpdated) {
-                    const date = new Date(data.lastUpdated);
-                    document.getElementById('lastUpdated').textContent = 
-                        `마지막 업데이트: ${date.toLocaleString('ko-KR')}`;
-                }
-                
-                // 생방송 상태 확인
-                const allPlayers = [...data.players.team1, ...data.players.team2];
-                checkAllLiveStatus(allPlayers);
+                // 팀 렌더링
+                renderTeams(data.players);
                 
             } catch (error) {
-                console.error('데이터 로딩 실패:', error);
+                console.error('데이터 로드 실패:', error);
             }
         }
         
-        // SOOP 생방송 상태 확인 (chapi 사용)
-        async function checkLiveStatus(soopId) {
-            try {
-                // chapi.sooplive.co.kr API 사용 (CORS 허용됨)
-                const response = await fetch(`https://chapi.sooplive.co.kr/api/${soopId}/station`, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json'
+        function renderTeams(players) {
+            const team1Html = players.team1.map(p => createPlayerCard(p)).join('');
+            const team2Html = players.team2.map(p => createPlayerCard(p)).join('');
+            
+            document.getElementById('team1Players').innerHTML = team1Html;
+            document.getElementById('team2Players').innerHTML = team2Html;
+        }
+        
+        // 팀 교환
+        function swapTeams() {
+            teamsSwapped = !teamsSwapped;
+            
+            const wrapper = document.getElementById('teamsWrapper');
+            const team1 = document.getElementById('team1Container');
+            const team2 = document.getElementById('team2Container');
+            
+            if (teamsSwapped) {
+                wrapper.insertBefore(team2, team1);
+                document.getElementById('team1Side').textContent = '레드';
+                document.getElementById('team2Side').textContent = '블루';
+                document.getElementById('swapBtn').textContent = '🔄 원래대로';
+            } else {
+                wrapper.insertBefore(team1, team2);
+                document.getElementById('team1Side').textContent = '블루';
+                document.getElementById('team2Side').textContent = '레드';
+                document.getElementById('swapBtn').textContent = '🔄 블루/레드 팀 교환';
+            }
+        }
+        
+        // SOOP 라이브 상태 확인
+        async function checkLiveStatus() {
+            const channels = [
+                'ecvhao', 'lilpa0309', 'toryvac', 'viichan6', 'gosegu2', '243000',
+                'devil0108', 'nmangoquince', 'danchu17', 'yeveee', 'insome0319', 'jaeparkk'
+            ];
+            
+            for (const channel of channels) {
+                try {
+                    const response = await fetch(`https://chapi.sooplive.co.kr/api/${channel}/station`);
+                    const data = await response.json();
+                    if (data.broad) {
+                        liveStatus[`https://ch.sooplive.co.kr/${channel}`] = data.broad.current_sum_viewer || true;
                     }
-                });
-                
-                if (!response.ok) {
-                    return { isLive: false, viewers: 0 };
+                } catch (e) {
+                    // 무시
                 }
-                
-                const data = await response.json();
-                
-                // broad가 있으면 방송중
-                if (data.broad) {
-                    return {
-                        isLive: true,
-                        viewers: data.broad.current_sum_viewer || 0,
-                        title: data.broad.broad_title || ''
-                    };
-                }
-                
-                return { isLive: false, viewers: 0 };
-            } catch (error) {
-                console.log(`${soopId} 상태 확인 실패:`, error);
-                return { isLive: false, viewers: 0, error: true };
             }
+            
+            // 라이브 상태 업데이트 후 다시 렌더링
+            loadData();
         }
         
-        // 모든 스트리머 생방송 상태 확인
-        async function checkAllLiveStatus(players) {
-            for (const player of players) {
-                const soopId = player.soop.split('/').pop();
-                const statusEl = document.getElementById(`live-${soopId}`);
-                
-                if (!statusEl) continue;
-                
-                const status = await checkLiveStatus(soopId);
-                const liveUrl = `https://play.sooplive.co.kr/${soopId}`;
-                
-                if (status.error) {
-                    statusEl.outerHTML = `<span class="live-status offline" id="live-${soopId}"><span class="live-dot"></span>확인불가</span>`;
-                } else if (status.isLive) {
-                    const viewerText = status.viewers > 0 ? `<span class="live-viewer">${status.viewers.toLocaleString()}명</span>` : '';
-                    statusEl.outerHTML = `<a href="${liveUrl}" target="_blank" class="live-status live" id="live-${soopId}" title="${status.title || '생방송 보기'}"><span class="live-dot"></span>LIVE${viewerText}</a>`;
-                } else {
-                    statusEl.outerHTML = `<span class="live-status offline" id="live-${soopId}"><span class="live-dot"></span>오프라인</span>`;
-                }
-                
-                // API 호출 간격 조절 (100ms)
-                await new Promise(r => setTimeout(r, 100));
-            }
-        }
-        
+        // 초기화
         loadData();
+        checkLiveStatus();
         
-        // 60초마다 생방송 상태 새로고침
-        setInterval(async () => {
-            try {
-                const response = await fetch('data.json');
-                const data = await response.json();
-                const allPlayers = [...data.players.team1, ...data.players.team2];
-                checkAllLiveStatus(allPlayers);
-            } catch (e) {}
-        }, 60000);
+        // 60초마다 라이브 상태 갱신
+        setInterval(checkLiveStatus, 60000);
     </script>
 </body>
 </html>
