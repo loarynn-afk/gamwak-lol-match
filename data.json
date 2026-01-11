@@ -1,14 +1,23 @@
 {
-  "lastUpdated": "2026-01-11T20:00:00",
+  "lastUpdated": "2026-01-11T21:00:00",
   "players": {
     "team1": [
       {
         "name": "우왁굳",
         "nickname": "메시아빠우왁굳#KR1",
         "position": "탑",
-        "currentTier": "BRONZE 4",
-        "record": "3승 2패 (60%)",
-        "mostChampions": ["문도박사", "블라디미르", "모데카이저"],
+        "currentTier": "BRONZE 3",
+        "lp": 15,
+        "record": "4승 2패",
+        "winrate": "67%",
+        "prevSeasonTier": "BRONZE 2",
+        "mostChampions": [
+          {"name": "문도박사", "games": 2},
+          {"name": "가렌", "games": 2},
+          {"name": "요릭", "games": 1},
+          {"name": "브라이어", "games": 1},
+          {"name": "바이", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/ecvhao",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ec/ecvhao/ecvhao.jpg"
       },
@@ -17,8 +26,16 @@
         "nickname": "내가바로 릴파다#KR1",
         "position": "정글",
         "currentTier": "Unranked",
-        "record": "",
-        "mostChampions": ["녹턴", "말파이트", "문도박사"],
+        "lp": 0,
+        "record": "3승 3패",
+        "winrate": "50%",
+        "rankType": "자유랭크 Gold 3",
+        "prevSeasonTier": "IRON 1",
+        "mostChampions": [
+          {"name": "녹턴", "games": 3},
+          {"name": "말파이트", "games": 2},
+          {"name": "문도박사", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/lilpa0309",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/li/lilpa0309/lilpa0309.jpg"
       },
@@ -27,8 +44,16 @@
         "nickname": "ViCTory#0219",
         "position": "미드",
         "currentTier": "GOLD 4",
-        "record": "2승 5패 (29%)",
-        "mostChampions": ["오리아나", "빅토르", "브라이어"],
+        "lp": 80,
+        "record": "7승 5패",
+        "winrate": "58%",
+        "prevSeasonTier": "SILVER 2",
+        "mostChampions": [
+          {"name": "오리아나", "games": 7},
+          {"name": "빅토르", "games": 5},
+          {"name": "브라이어", "games": 4},
+          {"name": "베이가", "games": 3}
+        ],
         "soop": "https://ch.sooplive.co.kr/toryvac",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/to/toryvac/toryvac.jpg"
       },
@@ -37,8 +62,16 @@
         "nickname": "빛 챤#xoxv",
         "position": "원딜",
         "currentTier": "BRONZE 1",
-        "record": "5승 3패 (63%)",
-        "mostChampions": ["시비르", "애쉬", "아펠리오스"],
+        "lp": 68,
+        "record": "6승 4패",
+        "winrate": "60%",
+        "prevSeasonTier": "BRONZE 2",
+        "mostChampions": [
+          {"name": "케이틀린", "games": 4},
+          {"name": "시비르", "games": 4},
+          {"name": "애쉬", "games": 3},
+          {"name": "아펠리오스", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/viichan6",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/vi/viichan6/viichan6.jpg"
       },
@@ -47,8 +80,16 @@
         "nickname": "레츠고세구#KR1",
         "position": "서폿",
         "currentTier": "BRONZE 4",
-        "record": "4승 1패 (80%)",
-        "mostChampions": ["세라핀", "럭스", "노틸러스"],
+        "lp": 97,
+        "record": "4승 1패",
+        "winrate": "80%",
+        "prevSeasonTier": "BRONZE 4",
+        "mostChampions": [
+          {"name": "세라핀", "games": 9},
+          {"name": "럭스", "games": 2},
+          {"name": "노틸러스", "games": 1},
+          {"name": "룰루", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/gosegu2",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/go/gosegu2/gosegu2.jpg"
       },
@@ -57,8 +98,17 @@
         "nickname": "돈까스#KR1",
         "position": "후보",
         "currentTier": "BRONZE 2",
-        "record": "1승 4패 (20%)",
-        "mostChampions": ["말파이트", "신짜오", "오공"],
+        "lp": 60,
+        "record": "1승 4패",
+        "winrate": "20%",
+        "prevSeasonTier": "BRONZE 1",
+        "mostChampions": [
+          {"name": "문도박사", "games": 2},
+          {"name": "가렌", "games": 2},
+          {"name": "볼리베어", "games": 1},
+          {"name": "바이", "games": 1},
+          {"name": "잭스", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/243000",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/24/243000/243000.jpg"
       }
@@ -69,8 +119,15 @@
         "nickname": "정글의신#1094",
         "position": "탑",
         "currentTier": "BRONZE 4",
-        "record": "3승 5패 (38%)",
-        "mostChampions": ["이블린", "탈론", "말파이트"],
+        "lp": 23,
+        "record": "3승 5패",
+        "winrate": "38%",
+        "prevSeasonTier": "IRON 3",
+        "mostChampions": [
+          {"name": "탈론", "games": 11},
+          {"name": "이블린", "games": 2},
+          {"name": "녹턴", "games": 2}
+        ],
         "soop": "https://ch.sooplive.co.kr/devil0108",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/de/devil0108/devil0108.jpg"
       },
@@ -79,8 +136,15 @@
         "nickname": "cs못먹어서미안해#MGR",
         "position": "정글",
         "currentTier": "IRON 2",
-        "record": "12승 24패 (33%)",
-        "mostChampions": ["말파이트", "마오카이", "누누와윌럼프"],
+        "lp": 83,
+        "record": "15승 14패",
+        "winrate": "52%",
+        "prevSeasonTier": "IRON 4",
+        "mostChampions": [
+          {"name": "말파이트", "games": 7},
+          {"name": "마오카이", "games": 6},
+          {"name": "누누와윌럼프", "games": 4}
+        ],
         "soop": "https://ch.sooplive.co.kr/nmangoquince",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/nm/nmangoquince/nmangoquince.jpg"
       },
@@ -89,8 +153,17 @@
         "nickname": "단바오#owo",
         "position": "미드",
         "currentTier": "Unranked",
-        "record": "",
-        "mostChampions": ["제라스", "아리", "리산드라"],
+        "lp": 0,
+        "record": "9승 11패",
+        "winrate": "45%",
+        "rankType": "자유랭크 Silver 3",
+        "prevSeasonTier": "BRONZE 1",
+        "mostChampions": [
+          {"name": "흐웨이", "games": 6},
+          {"name": "제라스", "games": 3},
+          {"name": "아리", "games": 1},
+          {"name": "리산드라", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/danchu17",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/da/danchu17/danchu17.jpg"
       },
@@ -99,8 +172,16 @@
         "nickname": "장카유설아#1445",
         "position": "원딜",
         "currentTier": "Unranked",
-        "record": "",
-        "mostChampions": ["미스포츈", "애쉬", "시비르"],
+        "lp": 0,
+        "record": "7승 8패",
+        "winrate": "47%",
+        "rankType": "자유랭크 Bronze 1",
+        "prevSeasonTier": "SILVER 4",
+        "mostChampions": [
+          {"name": "미스포츈", "games": 2},
+          {"name": "흐웨이", "games": 2},
+          {"name": "애쉬", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/yeveee",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ye/yeveee/yeveee.jpg"
       },
@@ -109,8 +190,18 @@
         "nickname": "무슨 생각일까#KR1",
         "position": "서폿",
         "currentTier": "Unranked",
-        "record": "",
-        "mostChampions": ["라칸", "니코", "노틸러스"],
+        "lp": 0,
+        "record": "5승 6패",
+        "winrate": "45%",
+        "rankType": "자유랭크 Silver 4",
+        "prevSeasonTier": "",
+        "mostChampions": [
+          {"name": "라칸", "games": 3},
+          {"name": "니코", "games": 2},
+          {"name": "세라핀", "games": 1},
+          {"name": "노틸러스", "games": 1},
+          {"name": "룰루", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/insome0319",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/in/insome0319/insome0319.jpg"
       },
@@ -119,8 +210,16 @@
         "nickname": "올리비아재#박재박",
         "position": "후보",
         "currentTier": "BRONZE 1",
-        "record": "6승 9패 (40%)",
-        "mostChampions": ["잭스", "문도박사", "말파이트"],
+        "lp": 71,
+        "record": "6승 9패",
+        "winrate": "40%",
+        "prevSeasonTier": "SILVER 3",
+        "mostChampions": [
+          {"name": "잭스", "games": 2},
+          {"name": "문도박사", "games": 1},
+          {"name": "말파이트", "games": 1},
+          {"name": "케넨", "games": 1}
+        ],
         "soop": "https://ch.sooplive.co.kr/jaeparkk",
         "avatar": "https://profile.img.sooplive.co.kr/LOGO/ja/jaeparkk/jaeparkk.jpg"
       }
