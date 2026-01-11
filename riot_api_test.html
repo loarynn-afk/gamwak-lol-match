@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riot API 테스트</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; color: #00d4ff; }
+        
+        .status-box {
+            background: #16213e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .status-box h3 { color: #00d4ff; margin-bottom: 10px; }
+        .status-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        .status-ok { color: #4ade80; }
+        .status-error { color: #f87171; }
+        .status-pending { color: #fbbf24; }
+        
+        .btn {
+            background: #00d4ff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        .btn:hover { background: #00a8cc; }
+        .btn:disabled { background: #555; cursor: not-allowed; }
+        
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .player-card {
+            background: #16213e;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #555;
+        }
+        .player-card.loaded { border-left-color: #4ade80; }
+        .player-card.error { border-left-color: #f87171; }
+        .player-card.loading { border-left-color: #fbbf24; }
+        
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .player-name { font-size: 18px; font-weight: bold; }
+        .player-team { 
+            font-size: 12px; 
+            padding: 3px 8px; 
+            border-radius: 4px;
+            background: #333;
+        }
+        .team-wak { background: #3b82f6; }
+        .team-gam { background: #ef4444; }
+        
+        .rank-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .tier-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        .rank-text { font-size: 16px; }
+        .lp-text { color: #888; font-size: 14px; }
+        
+        .stats { display: flex; gap: 15px; font-size: 14px; color: #aaa; }
+        .winrate { color: #4ade80; }
+        
+        .champions {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .champ-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+        }
+        
+        .log-box {
+            background: #0a0a15;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .log-item { padding: 3px 0; border-bottom: 1px solid #222; }
+        .log-time { color: #666; }
+        .log-success { color: #4ade80; }
+        .log-error { color: #f87171; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Riot API 실시간 테스트</h1>
+        
+        <div class="status-box">
+            <h3>📋 설정 상태</h3>
+            <div class="status-item">
+                <span>API 엔드포인트</span>
+                <span id="apiEndpoint" class="status-pending">확인 중...</span>
+            </div>
+            <div class="status-item">
+                <span>API 키 상태</span>
+                <span id="apiKeyStatus" class="status-pending">테스트 필요</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="btn" onclick="testApiConnection()">🔌 API 연결 테스트</button>
+            <button class="btn" onclick="loadAllPlayers()">📥 12명 전체 조회</button>
+            <button class="btn" onclick="clearResults()">🗑️ 초기화</button>
+        </div>
+        
+        <div class="player-grid" id="playerGrid"></div>
+        
+        <div class="log-box" id="logBox">
+            <div class="log-item"><span class="log-time">[시작]</span> 테스트 준비 완료</div>
+        </div>
+    </div>
+
+    <script>
+        // 12명 선수 목록
+        const PLAYERS = [
+            // 우왁굳팀
+            { name: "메시아빠우왁굳", tag: "KR1", displayName: "우왁굳", team: "wak" },
+            { name: "내가바로 릴파다", tag: "KR1", displayName: "릴파", team: "wak" },
+            { name: "ViCTory", tag: "0219", displayName: "빅토리", team: "wak" },
+            { name: "빛 챤", tag: "xoxv", displayName: "비챤", team: "wak" },
+            { name: "레츠고세구", tag: "KR1", displayName: "고세구", team: "wak" },
+            { name: "돈까스", tag: "KR1", displayName: "천양", team: "wak" },
+            // 감스트팀  
+            { name: "정글의신", tag: "1094", displayName: "감스트", team: "gam" },
+            { name: "cs못먹어서미안해", tag: "MGR", displayName: "망구랑", team: "gam" },
+            { name: "단바오", tag: "owo", displayName: "단츄", team: "gam" },
+            { name: "정카유설아", tag: "1445", displayName: "유설아", team: "gam" },
+            { name: "따효니 김효진", tag: "KR1", displayName: "따린", team: "gam" },
+            { name: "인간젤리", tag: "KR1", displayName: "젤리", team: "gam" }
+        ];
+        
+        // 챔피언 ID → 이름 매핑 (일부만)
+        const CHAMPION_MAP = {
+            1: "Annie", 2: "OldFiddlesticks", 3: "Galio", 4: "TwistedFate", 5: "XinZhao",
+            // ... 실제로는 Data Dragon에서 가져와야 함
+        };
+        
+        // API 베이스 URL (Vercel 배포 후 변경)
+        const API_BASE = window.location.origin;
+        
+        // 로그 추가
+        function addLog(message, type = 'info') {
+            const logBox = document.getElementById('logBox');
+            const time = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'log-success' : type === 'error' ? 'log-error' : '';
+            logBox.innerHTML += `<div class="log-item"><span class="log-time">[${time}]</span> <span class="${className}">${message}</span></div>`;
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+        
+        // API 연결 테스트
+        async function testApiConnection() {
+            addLog('API 연결 테스트 시작...');
+            document.getElementById('apiEndpoint').textContent = API_BASE + '/api/player';
+            
+            try {
+                // 단바오로 테스트
+                const response = await fetch(`${API_BASE}/api/player?name=단바오&tag=owo`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    document.getElementById('apiKeyStatus').textContent = data.error;
+                    document.getElementById('apiKeyStatus').className = 'status-error';
+                    addLog('API 오류: ' + data.error, 'error');
+                } else {
+                    document.getElementById('apiKeyStatus').textContent = '정상 작동 ✅';
+                    document.getElementById('apiKeyStatus').className = 'status-ok';
+                    addLog('API 연결 성공! PUUID: ' + data.puuid?.substring(0, 20) + '...', 'success');
+                }
+            } catch (error) {
+                document.getElementById('apiKeyStatus').textContent = '연결 실패';
+                document.getElementById('apiKeyStatus').className = 'status-error';
+                addLog('연결 실패: ' + error.message, 'error');
+            }
+        }
+        
+        // 플레이어 카드 생성
+        function createPlayerCard(player, index) {
+            return `
+                <div class="player-card" id="player-${index}">
+                    <div class="player-header">
+                        <span class="player-name">${player.displayName}</span>
+                        <span class="player-team team-${player.team}">${player.team === 'wak' ? '우왁굳팀' : '감스트팀'}</span>
+                    </div>
+                    <div style="color: #888; font-size: 13px;">${player.name}#${player.tag}</div>
+                    <div class="rank-info">
+                        <span class="rank-text">로딩 중...</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 플레이어 데이터 로드
+        async function loadPlayer(player, index) {
+            const card = document.getElementById(`player-${index}`);
+            card.className = 'player-card loading';
+            
+            try {
+                addLog(`${player.displayName} 조회 중...`);
+                const response = await fetch(`${API_BASE}/api/player?name=${encodeURIComponent(player.name)}&tag=${encodeURIComponent(player.tag)}`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    card.className = 'player-card error';
+                    card.querySelector('.rank-info').innerHTML = `<span style="color: #f87171;">오류: ${data.error}</span>`;
+                    addLog(`${player.displayName}: ${data.error}`, 'error');
+                    return;
+                }
+                
+                // 티어 아이콘 URL
+                const tier = data.rank?.tier || 'UNRANKED';
+                const tierLower = tier.toLowerCase();
+                const tierIconUrl = `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-${tierLower}.png`;
+                
+                // 랭크 정보 표시
+                let rankDisplay = '언랭크';
+                if (data.rank && data.rank.tier !== 'UNRANKED') {
+                    rankDisplay = `${data.rank.tier} ${data.rank.rank} (${data.rank.lp} LP)`;
+                }
+                
+                // 승률 표시
+                let statsDisplay = '';
+                if (data.rank && data.rank.wins > 0) {
+                    statsDisplay = `<span class="stats">${data.rank.wins}승 ${data.rank.losses}패 <span class="winrate">(${data.rank.winRate}%)</span></span>`;
+                }
+                
+                // 모스트 챔피언 (챔피언 ID를 이미지로)
+                let champDisplay = '';
+                if (data.topChampions && data.topChampions.length > 0) {
+                    champDisplay = '<div class="champions">';
+                    for (const champ of data.topChampions) {
+                        // Community Dragon에서 챔피언 아이콘 가져오기
+                        champDisplay += `<img class="champ-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${champ.championId}.png" alt="champion" onerror="this.style.display='none'">`;
+                    }
+                    champDisplay += '</div>';
+                }
+                
+                card.className = 'player-card loaded';
+                card.querySelector('.rank-info').innerHTML = `
+                    <img class="tier-icon" src="${tierIconUrl}" alt="${tier}" onerror="this.style.display='none'">
+                    <div>
+                        <div class="rank-text">${rankDisplay}</div>
+                        ${statsDisplay}
+                    </div>
+                `;
+                
+                if (champDisplay) {
+                    card.innerHTML += champDisplay;
+                }
+                
+                addLog(`${player.displayName}: ${rankDisplay}`, 'success');
+                
+            } catch (error) {
+                card.className = 'player-card error';
+                card.querySelector('.rank-info').innerHTML = `<span style="color: #f87171;">연결 오류</span>`;
+                addLog(`${player.displayName}: 연결 오류`, 'error');
+            }
+        }
+        
+        // 전체 로드
+        async function loadAllPlayers() {
+            const grid = document.getElementById('playerGrid');
+            grid.innerHTML = PLAYERS.map((p, i) => createPlayerCard(p, i)).join('');
+            
+            addLog('12명 전체 조회 시작...');
+            
+            // 순차적으로 로드 (Rate Limit 방지)
+            for (let i = 0; i < PLAYERS.length; i++) {
+                await loadPlayer(PLAYERS[i], i);
+                // 0.5초 딜레이 (Rate Limit 방지)
+                if (i < PLAYERS.length - 1) {
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            }
+            
+            addLog('전체 조회 완료!', 'success');
+        }
+        
+        // 초기화
+        function clearResults() {
+            document.getElementById('playerGrid').innerHTML = '';
+            document.getElementById('logBox').innerHTML = '<div class="log-item"><span class="log-time">[시작]</span> 테스트 준비 완료</div>';
+            document.getElementById('apiKeyStatus').textContent = '테스트 필요';
+            document.getElementById('apiKeyStatus').className = 'status-pending';
+            addLog('초기화 완료');
+        }
+        
+        // 페이지 로드 시
+        document.getElementById('apiEndpoint').textContent = API_BASE + '/api/player';
+    </script>
+</body>
+</html>
